@@ -1,0 +1,211 @@
+/* =======================
+   NAVBAR
+======================= */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    padding:18px 8%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    z-index:999;
+
+    transition:.4s;
+
+}
+
+.navbar.active{
+
+    background:rgba(5,8,22,.75);
+
+    backdrop-filter:blur(18px);
+
+    box-shadow:0 10px 30px rgba(0,0,0,.3);
+
+}
+
+/* =======================
+LOGO
+======================= */
+
+.logo{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    color:white;
+
+    cursor:pointer;
+
+}
+
+.logo span{
+
+    color:#06B6D4;
+
+}
+
+/* =======================
+LINKS
+======================= */
+
+.nav-links{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+.nav-links a{
+
+    color:white;
+
+    font-weight:500;
+
+    transition:.35s;
+
+    position:relative;
+
+}
+
+.nav-links a:hover{
+
+    color:#06B6D4;
+
+}
+
+.nav-links a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:#06B6D4;
+
+    transition:.35s;
+
+}
+
+.nav-links a:hover::after{
+
+    width:100%;
+
+}
+
+/* =======================
+RESUME BUTTON
+======================= */
+
+.resume-btn{
+
+    padding:10px 24px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #4F46E5,
+        #8B5CF6
+    );
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.resume-btn:hover{
+
+    transform:translateY(-4px);
+
+}
+
+/* =======================
+MENU BUTTON
+======================= */
+
+.menu-btn{
+
+    display:none;
+
+    font-size:28px;
+
+    cursor:pointer;
+
+    color:white;
+
+}
+
+/* =======================
+MOBILE
+======================= */
+
+@media(max-width:900px){
+
+.nav-links{
+
+    position:fixed;
+
+    right:-100%;
+
+    top:80px;
+
+    width:260px;
+
+    height:calc(100vh - 80px);
+
+    background:#08101f;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    padding-top:40px;
+
+    transition:.4s;
+
+}
+
+.nav-links.open{
+
+    right:0;
+
+}
+
+.menu-btn{
+
+    display:block;
+
+}
+
+.resume-btn{
+
+    display:none;
+
+}
+
+}

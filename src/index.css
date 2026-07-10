@@ -1,0 +1,341 @@
+/* ===========================
+   GOOGLE FONTS
+=========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ===========================
+   ROOT VARIABLES
+=========================== */
+:root{
+
+    --bg:#050816;
+    --bg2:#0f172a;
+
+    --primary:#4F46E5;
+    --secondary:#06B6D4;
+    --accent:#8B5CF6;
+
+    --white:#ffffff;
+    --text:#e5e7eb;
+    --gray:#94a3b8;
+
+    --glass:rgba(255,255,255,.08);
+
+    --border:rgba(255,255,255,.15);
+
+    --shadow:0 20px 50px rgba(0,0,0,.35);
+
+}
+
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:var(--bg);
+
+    color:var(--white);
+
+    overflow-x:hidden;
+
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+ul{
+    list-style:none;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* ===========================
+   SCROLL BAR
+=========================== */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+    background:#0b1120;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:linear-gradient(
+    var(--primary),
+    var(--accent));
+
+    border-radius:20px;
+}
+
+/* ===========================
+   CONTAINER
+=========================== */
+
+.container{
+
+    width:min(1200px,90%);
+    margin:auto;
+
+}
+
+/* ===========================
+   SECTION
+=========================== */
+
+section{
+
+    padding:100px 0;
+    position:relative;
+
+}
+
+.section-title{
+
+    font-size:40px;
+    text-align:center;
+    margin-bottom:60px;
+
+}
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.btn{
+
+    display:inline-block;
+
+    padding:14px 32px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--accent)
+    );
+
+    color:white;
+
+    transition:.35s;
+
+    font-weight:600;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:
+    0 10px 30px rgba(79,70,229,.45);
+
+}
+
+/* ===========================
+   GLASS CARD
+=========================== */
+
+.glass{
+
+    background:var(--glass);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid var(--border);
+
+    border-radius:20px;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ===========================
+   BACKGROUND
+=========================== */
+
+.background{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:-1;
+
+    overflow:hidden;
+
+}
+
+/* Floating circles */
+
+.background span{
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    border-radius:50%;
+
+    filter:blur(80px);
+
+    animation:float 18s infinite ease-in-out;
+
+}
+
+.background span:nth-child(1){
+
+    background:#4F46E5;
+
+    top:-80px;
+    left:-80px;
+
+}
+
+.background span:nth-child(2){
+
+    background:#8B5CF6;
+
+    right:-100px;
+    top:120px;
+
+}
+
+.background span:nth-child(3){
+
+    background:#06B6D4;
+
+    bottom:-100px;
+    left:10%;
+
+}
+
+.background span:nth-child(4){
+
+    background:#9333EA;
+
+    right:15%;
+    bottom:-120px;
+
+}
+
+.background span:nth-child(5){
+
+    background:#2563EB;
+
+    left:45%;
+    top:40%;
+
+}
+
+/* ===========================
+   CURSOR GLOW
+=========================== */
+
+.cursor-glow{
+
+    width:25px;
+
+    height:25px;
+
+    position:fixed;
+
+    background:#06B6D4;
+
+    border-radius:50%;
+
+    filter:blur(18px);
+
+    pointer-events:none;
+
+    z-index:999;
+
+}
+
+/* ===========================
+   PROGRESS BAR
+=========================== */
+
+#progressBar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    height:5px;
+
+    background:linear-gradient(
+        to right,
+        var(--primary),
+        var(--accent)
+    );
+
+    width:0;
+
+    z-index:9999;
+
+}
+
+/* ===========================
+   ANIMATION
+=========================== */
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-80px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+/* ===========================
+   PLACEHOLDER STYLE
+=========================== */
+
+h1{
+
+    text-align:center;
+
+    padding:100px 0;
+
+    font-size:50px;
+
+}
