@@ -80,7 +80,7 @@ function Hero() {
           <div className="profile-card">
 
             <img
-              src="/profile.png"
+              src="/profile.jpeg"
               alt="Dheeraj"
             />
 
