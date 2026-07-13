@@ -10,7 +10,7 @@ const projects = [
     tech: ["Python", "MySQL"],
     description:
       "A desktop application to manage inventory, billing, customer records, and owner dashboard.",
-    github: "#",
+    github: "https://github.com/NichenametlaDheeraj/Inventory-Management-System",
     live: "#",
   },
   {
@@ -18,7 +18,7 @@ const projects = [
     tech: ["Python"],
     description:
       "Movie scheduling, seat booking, ticket generation, and owner authentication.",
-    github: "#",
+    github: "https://github.com/NichenametlaDheeraj/Movie-Ticket-Booking-System",
     live: "#",
   },
   {
@@ -26,7 +26,7 @@ const projects = [
     tech: ["Python"],
     description:
       "Recharge plans, SIM validation, and balance management.",
-    github: "#",
+    github: "https://github.com/NichenametlaDheeraj/Mobile-Recharge-System",
     live: "#",
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     tech: ["Python"],
     description:
       "Customer management, rental tracking, booking, and billing.",
-    github: "#",
+    github: "https://github.com/NichenametlaDheeraj/Bike-Rental-Management-System",
     live: "#",
   },
 ];
