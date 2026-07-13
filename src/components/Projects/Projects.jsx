@@ -7,34 +7,34 @@ import {
 const projects = [
   {
     title: "Inventory Management System",
-    tech: "Python, MySQL",
+    tech: ["Python", "MySQL"],
     description:
-      "A desktop application to manage inventory, billing, customer records, and an owner dashboard with real-time stock updates and sales management.",
-    github: "https://github.com/NichenametlaDheeraj/Inventory-Management-System",
+      "A desktop application to manage inventory, billing, customer records, and owner dashboard.",
+    github: "#",
     live: "#",
   },
   {
     title: "Movie Ticket Booking System",
-    tech: "Python",
+    tech: ["Python"],
     description:
-      "A movie ticket booking application with movie scheduling, seat selection, ticket generation, and secure owner authentication.",
-    github: "https://github.com/NichenametlaDheeraj/Movie-Ticket-Booking-System",
+      "Movie scheduling, seat booking, ticket generation, and owner authentication.",
+    github: "#",
     live: "#",
   },
   {
     title: "Mobile Recharge System",
-    tech: "Python",
+    tech: ["Python"],
     description:
-      "A recharge management system that validates SIM details, offers recharge plans, maintains balance information, and generates recharge history.",
-    github: "https://github.com/NichenametlaDheeraj/Mobile-Recharge-System",
+      "Recharge plans, SIM validation, and balance management.",
+    github: "#",
     live: "#",
   },
   {
     title: "Bike Rental Management System",
-    tech: "Python",
+    tech: ["Python"],
     description:
-      "A rental management application for customer registration, bike booking, rental tracking, return management, and billing.",
-    github: "https://github.com/NichenametlaDheeraj/Bike-Rental-Management-System",
+      "Customer management, rental tracking, booking, and billing.",
+    github: "#",
     live: "#",
   },
 ];
