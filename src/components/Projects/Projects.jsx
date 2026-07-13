@@ -6,64 +6,38 @@ import {
 
 const projects = [
   {
+    title: "Inventory Management System",
+    tech: "Python, MySQL",
+    description:
+      "A desktop application to manage inventory, billing, customer records, and an owner dashboard with real-time stock updates and sales management.",
+    github: "https://github.com/NichenametlaDheeraj/Inventory-Management-System",
+    live: "#",
+  },
+  {
+    title: "Movie Ticket Booking System",
+    tech: "Python",
+    description:
+      "A movie ticket booking application with movie scheduling, seat selection, ticket generation, and secure owner authentication.",
+    github: "https://github.com/NichenametlaDheeraj/Movie-Ticket-Booking-System",
+    live: "#",
+  },
+  {
     title: "Mobile Recharge System",
-    image: "/projects/recharge.png",
+    tech: "Python",
     description:
-      "A Python-based recharge management system with dynamic recharge plans, bill generation and recharge history.",
-
-    tech: ["Python"],
-
-    github: "#",
-
+      "A recharge management system that validates SIM details, offers recharge plans, maintains balance information, and generates recharge history.",
+    github: "https://github.com/NichenametlaDheeraj/Mobile-Recharge-System",
     live: "#",
   },
-
   {
-    title: "Student Management System",
-
-    image: "/projects/student.png",
-
+    title: "Bike Rental Management System",
+    tech: "Python",
     description:
-      "Student record management system using Python and MySQL supporting CRUD operations.",
-
-    tech: ["Python", "MySQL"],
-
-    github: "#",
-
-    live: "#",
-  },
-
-  {
-    title: "Movie Recommendation System",
-
-    image: "/projects/movie.png",
-
-    description:
-      "Movie recommendation web application built using Django and REST APIs.",
-
-    tech: ["Django", "REST API", "MySQL"],
-
-    github: "#",
-
-    live: "#",
-  },
-
-  {
-    title: "Personal Portfolio",
-
-    image: "/projects/portfolio.png",
-
-    description:
-      "Modern responsive portfolio website developed using React and custom CSS animations.",
-
-    tech: ["React", "CSS", "JavaScript"],
-
-    github: "#",
-
+      "A rental management application for customer registration, bike booking, rental tracking, return management, and billing.",
+    github: "https://github.com/NichenametlaDheeraj/Bike-Rental-Management-System",
     live: "#",
   },
 ];
-
 function Projects() {
   return (
     <section id="projects" className="projects">
