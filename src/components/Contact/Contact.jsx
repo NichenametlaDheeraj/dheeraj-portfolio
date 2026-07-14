@@ -1,17 +1,57 @@
+import { useRef, useState } from "react";
+import emailjs from "@emailjs/browser";
 import "./Contact.css";
 
 import {
   FaEnvelope,
   FaPhoneAlt,
   FaMapMarkerAlt,
-  FaGithub,
   FaLinkedin,
-  FaPaperPlane,
+  FaGithub,
 } from "react-icons/fa";
 
 function Contact() {
+  const form = useRef();
+
+  const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    emailjs
+      .sendForm(
+        "service_jmnfl0k",
+        "template_8nveing",
+        form.current,
+        "KxxmkuRIQNqaq_FAO"
+      )
+      .then(() => {
+        setLoading(false);
+        setMessage("✅ Message sent successfully!");
+        form.current.reset();
+
+        setTimeout(() => {
+          setMessage("");
+        }, 4000);
+      })
+      .catch((error) => {
+        console.error(error);
+
+        setLoading(false);
+
+        setMessage("❌ Failed to send message.");
+
+        setTimeout(() => {
+          setMessage("");
+        }, 4000);
+      });
+  };
+
   return (
-    <section id="contact" className="contact">
+    <section className="contact" id="contact">
 
       <div className="container">
 
@@ -19,62 +59,49 @@ function Contact() {
           Get In Touch
         </h2>
 
-        <p className="contact-subtitle">
-          I'm currently looking for internship and full-time Software
-          Engineering opportunities. Feel free to reach out!
+        <p className="section-subtitle">
+          Have a project, internship opportunity, or any questions?
+          Feel free to contact me.
         </p>
 
         <div className="contact-wrapper">
 
           {/* Left */}
 
-          <div className="contact-info glass">
+          <div className="contact-info">
 
-            <h3>Contact Information</h3>
-
-            <div className="info-box">
-
-              <FaEnvelope className="contact-icon"/>
+            <div className="info-card">
+              <FaEnvelope className="icon" />
 
               <div>
-                <h4>Email</h4>
+                <h3>Email</h3>
 
                 <a href="mailto:dheerajnichenametla@gmail.com">
                   dheerajnichenametla@gmail.com
                 </a>
-
               </div>
-
             </div>
 
-            <div className="info-box">
-
-              <FaPhoneAlt className="contact-icon"/>
+            <div className="info-card">
+              <FaPhoneAlt className="icon" />
 
               <div>
-
-                <h4>Phone</h4>
+                <h3>Phone</h3>
 
                 <a href="tel:+918019479721">
                   +91 8019479721
                 </a>
-
               </div>
-
             </div>
 
-            <div className="info-box">
-
-              <FaMapMarkerAlt className="contact-icon"/>
+            <div className="info-card">
+              <FaMapMarkerAlt className="icon" />
 
               <div>
+                <h3>Location</h3>
 
-                <h4>Location</h4>
-
-                <p>Andhra Pradesh, India</p>
-
+                <p>Anantapur, Andhra Pradesh, India</p>
               </div>
-
             </div>
 
             <div className="social-links">
@@ -84,7 +111,7 @@ function Contact() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaGithub/>
+                <FaGithub />
               </a>
 
               <a
@@ -92,7 +119,7 @@ function Contact() {
                 target="_blank"
                 rel="noreferrer"
               >
-                <FaLinkedin/>
+                <FaLinkedin />
               </a>
 
             </div>
@@ -101,37 +128,52 @@ function Contact() {
 
           {/* Right */}
 
-          <form className="contact-form glass">
+          <form
+            ref={form}
+            onSubmit={sendEmail}
+            className="contact-form"
+          >
 
             <input
               type="text"
+              name="name"
               placeholder="Your Name"
               required
             />
 
             <input
               type="email"
+              name="email"
               placeholder="Your Email"
               required
             />
 
             <input
               type="text"
+              name="title"
               placeholder="Subject"
+              required
             />
 
             <textarea
-              rows="7"
-              placeholder="Write your message..."
-            ></textarea>
+              name="message"
+              rows="6"
+              placeholder="Your Message"
+              required
+            />
 
-            <button className="btn">
-
-              <FaPaperPlane/>
-
-              Send Message
-
+            <button
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Sending..." : "Send Message"}
             </button>
+
+            {message && (
+              <p className="status">
+                {message}
+              </p>
+            )}
 
           </form>
 

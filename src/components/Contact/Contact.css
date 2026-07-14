@@ -1,79 +1,142 @@
+/* =========================
+   CONTACT SECTION
+========================= */
+
 .contact{
-
-    padding:100px 0;
-
+    padding:100px 8%;
+    background:#0b1120;
 }
 
-.contact-subtitle{
-
+.section-title{
     text-align:center;
-
-    color:#94A3B8;
-
-    margin-bottom:60px;
-
+    font-size:40px;
+    color:#fff;
+    margin-bottom:15px;
 }
+
+.section-subtitle{
+    text-align:center;
+    color:#94a3b8;
+    max-width:650px;
+    margin:0 auto 60px;
+    line-height:1.8;
+}
+
+/* =========================
+   CONTACT WRAPPER
+========================= */
 
 .contact-wrapper{
-
     display:grid;
+    grid-template-columns:1fr 1.3fr;
+    gap:50px;
+    align-items:start;
+}
 
-    grid-template-columns:1fr 1.2fr;
+@media(max-width:900px){
 
-    gap:40px;
+.contact-wrapper{
+    grid-template-columns:1fr;
+}
 
 }
+
+/* =========================
+   CONTACT INFO
+========================= */
 
 .contact-info{
+    display:flex;
+    flex-direction:column;
+    gap:25px;
+}
 
-    padding:40px;
+.info-card{
+    display:flex;
+    align-items:center;
+    gap:18px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    padding:22px;
+
+    border-radius:18px;
+
+    transition:.35s;
+}
+
+.info-card:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#06B6D4;
 
 }
 
-.contact-info h3{
+.icon{
 
-    margin-bottom:30px;
+    width:60px;
 
-}
+    height:60px;
 
-.info-box{
+    border-radius:50%;
 
     display:flex;
 
-    gap:20px;
+    justify-content:center;
 
-    margin-bottom:30px;
+    align-items:center;
+
+    background:#06B6D4;
+
+    color:white;
+
+    font-size:24px;
+
+    flex-shrink:0;
+
+    padding:18px;
 
 }
 
-.contact-icon{
+.info-card h3{
 
-    font-size:28px;
+    color:white;
+
+    margin-bottom:6px;
+
+}
+
+.info-card a,
+.info-card p{
+
+    color:#cbd5e1;
+
+    text-decoration:none;
+
+    line-height:1.6;
+
+}
+
+.info-card a:hover{
 
     color:#06B6D4;
 
 }
 
-.info-box h4{
-
-    margin-bottom:8px;
-
-}
-
-.info-box a,
-.info-box p{
-
-    color:#CBD5E1;
-
-}
+/* =========================
+SOCIAL
+========================= */
 
 .social-links{
 
     display:flex;
 
-    gap:20px;
+    gap:18px;
 
-    margin-top:30px;
+    margin-top:15px;
 
 }
 
@@ -97,7 +160,7 @@
 
     font-size:22px;
 
-    transition:.3s;
+    transition:.35s;
 
 }
 
@@ -105,13 +168,29 @@
 
     background:#06B6D4;
 
-    transform:translateY(-6px);
+    transform:translateY(-5px);
 
 }
 
+/* =========================
+FORM
+========================= */
+
 .contact-form{
 
-    padding:40px;
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
 
 }
 
@@ -120,9 +199,7 @@
 
     width:100%;
 
-    margin-bottom:20px;
-
-    padding:16px;
+    padding:15px 18px;
 
     border:none;
 
@@ -134,28 +211,85 @@
 
     color:white;
 
+    font-size:16px;
+
+    transition:.3s;
+
 }
+
+.contact-form input:focus,
+.contact-form textarea:focus{
+
+    border:1px solid #06B6D4;
+
+    box-shadow:0 0 12px rgba(6,182,212,.25);
+
+}
+
+.contact-form textarea{
+
+    resize:none;
+
+}
+
+/* =========================
+BUTTON
+========================= */
 
 .contact-form button{
 
+    padding:15px;
+
     border:none;
+
+    border-radius:12px;
 
     cursor:pointer;
 
-    display:flex;
+    background:linear-gradient(
+        135deg,
+        #4F46E5,
+        #06B6D4
+    );
 
-    gap:10px;
+    color:white;
 
-    align-items:center;
+    font-size:17px;
+
+    font-weight:600;
+
+    transition:.35s;
 
 }
 
-@media(max-width:900px){
+.contact-form button:hover{
 
-.contact-wrapper{
+    transform:translateY(-3px);
 
-grid-template-columns:1fr;
+    box-shadow:0 12px 25px rgba(79,70,229,.35);
 
 }
+
+.contact-form button:disabled{
+
+    opacity:.7;
+
+    cursor:not-allowed;
+
+}
+
+/* =========================
+STATUS
+========================= */
+
+.status{
+
+    text-align:center;
+
+    color:#22c55e;
+
+    font-weight:600;
+
+    margin-top:5px;
 
 }
