@@ -22,8 +22,8 @@
     border-radius: 20px;
     overflow: hidden;
     transition: .35s;
-    backdrop-filter: blur(15px);
-}
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);}
 
 .project-card:hover {
     transform: translateY(-10px);
