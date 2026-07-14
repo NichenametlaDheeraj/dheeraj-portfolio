@@ -75,7 +75,12 @@ function Navbar() {
       </ul>
 
       {/* Resume Button */}
-      <a href="/resume.pdf" className="resume-btn" download>
+      <a
+        href="/Resume_Dheeraj_Nichenametla.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="resume-btn"
+      >
         Resume
       </a>
 

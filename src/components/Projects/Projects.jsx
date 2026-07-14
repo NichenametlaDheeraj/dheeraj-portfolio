@@ -19,7 +19,7 @@ const projects = [
       "A movie ticket booking application with movie scheduling, seat booking, ticket generation, and owner authentication.",
     github:
       "https://github.com/NichenametlaDheeraj/Movie-Ticket-Booking-System",
-  }
+  },
   {
     title: "Mobile Recharge System",
     image: "/projects/recharge.png",
