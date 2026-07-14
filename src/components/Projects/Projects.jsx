@@ -16,10 +16,10 @@ const projects = [
     image: "/projects/movie.png",
     tech: ["Python"],
     description:
-      "A movie ticket booking system with movie scheduling, seat selection, ticket generation, and owner authentication.",
+      "A movie ticket booking application with movie scheduling, seat booking, ticket generation, and owner authentication.",
     github:
       "https://github.com/NichenametlaDheeraj/Movie-Ticket-Booking-System",
-  },
+  }
   {
     title: "Mobile Recharge System",
     image: "/projects/recharge.png",
