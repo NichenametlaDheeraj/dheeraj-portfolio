@@ -1,5 +1,11 @@
 import "./Hero.css";
-import { FaGithub, FaLinkedin, FaDownload, FaArrowRight } from "react-icons/fa";
+import {
+  FaGithub,
+  FaLinkedin,
+  FaDownload,
+  FaArrowRight,
+} from "react-icons/fa";
+
 import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
@@ -8,7 +14,8 @@ function Hero() {
 
       <div className="hero-container">
 
-        {/* Left Side */}
+        {/* LEFT */}
+
         <div className="hero-left">
 
           <p className="hero-tag">
@@ -16,20 +23,23 @@ function Hero() {
           </p>
 
           <h1>
-            Dheeraj
-            <span> Nichenametla</span>
+            Dheeraj <span>Nichenametla</span>
           </h1>
 
           <TypeAnimation
             sequence={[
-              "Python Backend Developer",
+              "Python Full Stack Developer",
               2000,
+
               "Django Developer",
               2000,
-              "React Learner",
+
+              "React Developer",
               2000,
+
               "Machine Learning Enthusiast",
               2000,
+
               "Generative AI Learner",
               2000,
             ]}
@@ -40,32 +50,56 @@ function Hero() {
           />
 
           <p className="hero-desc">
-            Passionate Computer Science student building
-            scalable web applications using Python, Django,
-            REST APIs and modern web technologies.
+            Passionate Computer Science student focused on building
+            scalable web applications using Python, Django, React,
+            REST APIs, MySQL, Machine Learning, and Generative AI.
+            I enjoy solving real-world problems through clean,
+            efficient, and user-friendly software.
           </p>
+
+          {/* BUTTONS */}
 
           <div className="hero-buttons">
 
-            <a href="/resume.pdf" download className="btn">
+            <a
+              href="/Resume_Dheeraj_Nichenametla.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+            >
               <FaDownload />
-              Resume
+              Download Resume
             </a>
 
-            <a href="#projects" className="btn-outline">
+            <a
+              href="#projects"
+              className="btn-outline"
+            >
               <FaArrowRight />
-              Projects
+              View Projects
             </a>
 
           </div>
 
+          {/* SOCIAL LINKS */}
+
           <div className="socials">
 
-            <a href="#">
+            <a
+              href="https://github.com/NichenametlaDheeraj"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
               <FaGithub />
             </a>
 
-            <a href="#">
+            <a
+              href="https://www.linkedin.com/in/nichenametla-dheeraj-740701342/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
               <FaLinkedin />
             </a>
 
@@ -73,7 +107,7 @@ function Hero() {
 
         </div>
 
-        {/* Right Side */}
+        {/* RIGHT */}
 
         <div className="hero-right">
 
@@ -81,7 +115,7 @@ function Hero() {
 
             <img
               src="/profile.jpeg"
-              alt="Dheeraj"
+              alt="Dheeraj Nichenametla"
             />
 
           </div>
