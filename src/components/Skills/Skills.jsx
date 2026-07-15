@@ -1,4 +1,5 @@
 import "./Skills.css";
+
 import {
   FaPython,
   FaHtml5,
@@ -7,6 +8,8 @@ import {
   FaReact,
   FaGitAlt,
   FaDatabase,
+  FaRobot,
+  FaCode,
 } from "react-icons/fa";
 
 import {
@@ -14,28 +17,31 @@ import {
   SiMysql,
   SiPostman,
   SiGithub,
+  SiPandas,
+  SiNumpy,
+  SiJupyter,
 } from "react-icons/si";
 
 const skills = [
   {
     icon: <FaPython />,
     name: "Python",
-    level: 95,
+    level: 90,
   },
   {
     icon: <SiDjango />,
     name: "Django",
-    level: 90,
+    level: 85,
   },
   {
     icon: <FaHtml5 />,
-    name: "HTML",
-    level: 95,
+    name: "HTML5",
+    level: 90,
   },
   {
     icon: <FaCss3Alt />,
-    name: "CSS",
-    level: 90,
+    name: "CSS3",
+    level: 85,
   },
   {
     icon: <FaJs />,
@@ -50,7 +56,12 @@ const skills = [
   {
     icon: <SiMysql />,
     name: "MySQL",
-    level: 90,
+    level: 85,
+  },
+  {
+    icon: <FaDatabase />,
+    name: "SQL",
+    level: 85,
   },
   {
     icon: <FaGitAlt />,
@@ -65,56 +76,69 @@ const skills = [
   {
     icon: <SiPostman />,
     name: "REST APIs",
+    level: 80,
+  },
+  {
+    icon: <SiPandas />,
+    name: "Pandas",
+    level: 75,
+  },
+  {
+    icon: <SiNumpy />,
+    name: "NumPy",
+    level: 75,
+  },
+  {
+    icon: <SiJupyter />,
+    name: "Jupyter / Colab",
     level: 85,
   },
   {
-    icon: <FaDatabase />,
-    name: "SQL",
-    level: 88,
+    icon: <FaRobot />,
+    name: "Machine Learning",
+    level: 70,
+  },
+  {
+    icon: <FaRobot />,
+    name: "Generative AI",
+    level: 65,
+  },
+  {
+    icon: <FaCode />,
+    name: "VS Code",
+    level: 90,
   },
 ];
 
 function Skills() {
   return (
-    <section id="skills" className="skills"data-aos="zoom-in">
-
+    <section
+      id="skills"
+      className="skills"
+      data-aos="zoom-in"
+    >
       <div className="container">
-
         <h2 className="section-title">
           Technical Skills
         </h2>
 
         <div className="skills-grid">
-
           {skills.map((skill, index) => (
-
-            <div className="skill-card glass" key={index}>
-
+            <div
+              className="skill-card glass"
+              key={index}
+            >
               <div className="skill-icon">
                 {skill.icon}
               </div>
 
               <h3>{skill.name}</h3>
 
-              <div className="progress">
-
-                <div
-                  className="progress-bar"
-                  style={{ width: `${skill.level}%` }}
-                ></div>
-
-              </div>
-
-              <span>{skill.level}%</span>
-
+              
             </div>
-
           ))}
-
         </div>
-
       </div>
-
     </section>
   );
 }
