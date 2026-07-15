@@ -76,7 +76,7 @@ const skills = [
 
 function Skills() {
   return (
-    <section id="skills" className="skills">
+    <section id="skills" className="skills"data-aos="zoom-in">
 
       <div className="container">
 

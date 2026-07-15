@@ -36,7 +36,7 @@ const education = [
 
 function Education() {
   return (
-    <section id="education" className="education">
+    <section id="education" className="education" data-aos="fade-left">
 
       <div className="container">
 

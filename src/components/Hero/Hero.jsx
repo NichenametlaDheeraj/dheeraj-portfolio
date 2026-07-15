@@ -10,7 +10,7 @@ import { TypeAnimation } from "react-type-animation";
 
 function Hero() {
   return (
-    <section id="home" className="hero">
+    <section id="home" className="hero"data-aos="fade-up">
 
       <div className="hero-container">
 

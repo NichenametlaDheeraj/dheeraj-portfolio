@@ -43,7 +43,7 @@ const achievements = [
 
 function Achievements() {
   return (
-    <section id="achievements" className="achievements">
+    <section id="achievements" className="achievements" data-aos="zoom-in-up">
       <div className="container">
         <h2 className="section-title">Achievements</h2>
 
