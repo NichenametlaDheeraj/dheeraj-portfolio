@@ -1,6 +1,8 @@
-import "./index.css";
+import { useEffect, useState } from "react";
 
-// Components
+import Loader from "./components/Loader/Loader";
+import Background from "./components/Background/Background";
+
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/About";
@@ -12,46 +14,34 @@ import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <>
       {/* Animated Background */}
-      <div className="background">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <Background />
 
-      {/* Cursor Glow */}
-      <div className="cursor-glow"></div>
+      {/* Loader Overlay */}
+      {loading && <Loader />}
 
-      {/* Scroll Progress */}
-      <div id="progressBar"></div>
-
-      {/* Website */}
+      {/* Portfolio */}
       <Navbar />
-
-      <main>
-
-        <Hero />
-
-        <About />
-
-        <Skills />
-
-        <Projects />
-
-        <Education />
-
-        <Achievements />
-
-        <Contact />
-
-      </main>
-
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Education />
+      <Achievements />
+      <Contact />
       <Footer />
-
     </>
   );
 }
