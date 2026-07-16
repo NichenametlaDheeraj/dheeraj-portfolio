@@ -1,0 +1,48 @@
+.visitor-counter{
+
+    width: fit-content;
+
+    margin: 0 auto 30px;
+
+    padding: 12px 24px;
+
+    border-radius: 50px;
+
+    background: rgba(255,255,255,.08);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    backdrop-filter: blur(15px);
+
+    color: white;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-size: 18px;
+
+    font-weight: 600;
+
+    transition: .3s;
+}
+
+.visitor-counter:hover{
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 30px rgba(79,70,229,.35);
+
+}
+
+.visitor-counter span{
+
+    color: #06B6D4;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+}

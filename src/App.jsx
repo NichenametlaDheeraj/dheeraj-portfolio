@@ -13,6 +13,7 @@ import Education from "./components/Education/Education";
 import Achievements from "./components/Achievements/Achievements";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
+import VisitorCounter from "./components/VisitorCounter/VisitorCounter";
 
 function App() {
   const [loading, setLoading] = useState(true);

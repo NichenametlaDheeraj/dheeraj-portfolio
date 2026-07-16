@@ -6,49 +6,50 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
+import VisitorCounter from "../VisitorCounter/VisitorCounter";
+
 function Footer() {
   return (
+    <footer className="footer">
 
-<footer className="footer">
+      <div className="container">
 
-<div className="container">
+        {/* Visitor Counter */}
+        <VisitorCounter />
 
-<h2>Dheeraj Nichenametla</h2>
+        <h2>Dheeraj Nichenametla</h2>
 
-<p>
-Python Backend Developer | React Learner | AI Enthusiast
-</p>
+        <p>
+          Python Backend Developer | React Learner | AI Enthusiast
+        </p>
 
-<div className="footer-social">
+        <div className="footer-social">
 
-<a
-href="https://github.com/NichenametlaDheeraj"
-target="_blank"
-rel="noreferrer"
->
-<FaGithub/>
-</a>
+          <a
+            href="https://github.com/NichenametlaDheeraj"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaGithub />
+          </a>
 
-<a
-href="https://www.linkedin.com/in/nichenametla-dheeraj-740701342/"
-target="_blank"
-rel="noreferrer"
->
-<FaLinkedin/>
-</a>
+          <a
+            href="https://www.linkedin.com/in/nichenametla-dheeraj-740701342/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaLinkedin />
+          </a>
 
-</div>
+        </div>
 
-<p className="copyright">
+        <p className="copyright">
+          Made with <FaHeart color="red" /> by Dheeraj Nichenametla
+        </p>
 
-Made with <FaHeart color="red"/> by Dheeraj Nichenametla
+      </div>
 
-</p>
-
-</div>
-
-</footer>
-
+    </footer>
   );
 }
 
