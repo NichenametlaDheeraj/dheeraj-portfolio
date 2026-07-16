@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { logPageView } from "./analytics";
 
 import Loader from "./components/Loader/Loader";
 import Background from "./components/Background/Background";
@@ -16,6 +17,7 @@ import Footer from "./components/Footer/Footer";
 function App() {
   const [loading, setLoading] = useState(true);
 
+  // Loading Screen
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -24,15 +26,20 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
+  // Google Analytics - Track Page Visit
+  useEffect(() => {
+    logPageView();
+  }, []);
+
   return (
     <>
       {/* Animated Background */}
       <Background />
 
-      {/* Loader Overlay */}
+      {/* Loading Screen */}
       {loading && <Loader />}
 
-      {/* Portfolio */}
+      {/* Portfolio Sections */}
       <Navbar />
       <Hero />
       <About />

@@ -6,13 +6,18 @@ import "./App.css";
 
 import App from "./App";
 
-import AOS from "aos";
 import "aos/dist/aos.css";
+import AOS from "aos";
+
+import { initGA } from "./analytics";
 
 AOS.init({
   duration: 1000,
   once: true,
 });
+
+// Initialize Google Analytics only once
+initGA();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
