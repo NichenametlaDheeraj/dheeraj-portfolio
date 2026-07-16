@@ -11,11 +11,7 @@ import VisitorCounter from "../VisitorCounter/VisitorCounter";
 function Footer() {
   return (
     <footer className="footer">
-
       <div className="container">
-
-        {/* Visitor Counter */}
-        <VisitorCounter />
 
         <h2>Dheeraj Nichenametla</h2>
 
@@ -24,7 +20,6 @@ function Footer() {
         </p>
 
         <div className="footer-social">
-
           <a
             href="https://github.com/NichenametlaDheeraj"
             target="_blank"
@@ -40,15 +35,16 @@ function Footer() {
           >
             <FaLinkedin />
           </a>
-
         </div>
+
+        {/* Visitor Counter */}
+        <VisitorCounter />
 
         <p className="copyright">
           Made with <FaHeart color="red" /> by Dheeraj Nichenametla
         </p>
 
       </div>
-
     </footer>
   );
 }

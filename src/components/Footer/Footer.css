@@ -71,3 +71,7 @@ transform:translateY(-5px);
 margin-top:20px;
 
 }
+.visitor-counter {
+  margin: 20px auto;
+  width: fit-content;
+}

@@ -1,48 +1,25 @@
-.visitor-counter{
+.visitor-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 
-    width: fit-content;
+  margin-top: 30px;
 
-    margin: 0 auto 30px;
+  padding: 10px 20px;
 
-    padding: 12px 24px;
+  border-radius: 50px;
 
-    border-radius: 50px;
+  color: #fff;
 
-    background: rgba(255,255,255,.08);
+  font-size: 16px;
 
-    border: 1px solid rgba(255,255,255,.15);
-
-    backdrop-filter: blur(15px);
-
-    color: white;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    font-size: 18px;
-
-    font-weight: 600;
-
-    transition: .3s;
+  font-weight: 600;
 }
 
-.visitor-counter:hover{
+.visitor-counter span {
+  color: #06b6d4;
 
-    transform: translateY(-4px);
+  font-size: 18px;
 
-    box-shadow: 0 10px 30px rgba(79,70,229,.35);
-
-}
-
-.visitor-counter span{
-
-    color: #06B6D4;
-
-    font-size: 22px;
-
-    font-weight: 700;
-
+  font-weight: 700;
 }
