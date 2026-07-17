@@ -6,7 +6,7 @@ function VisitorCounter() {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    const updateVisitor = async () => {
+    const handleVisitor = async () => {
       // Get current visitor count
       const { data, error } = await supabase
         .from("visitors")
@@ -19,29 +19,38 @@ function VisitorCounter() {
         return;
       }
 
-      const current = data.count ?? 0;
-      const newCount = current + 1;
+      let currentCount = data.count ?? 0;
 
-      // Update visitor count
-      const { error: updateError } = await supabase
-        .from("visitors")
-        .update({ count: newCount })
-        .eq("id", 1);
+      // Check if this browser has already visited
+      const hasVisited = localStorage.getItem("portfolio_visited");
 
-      if (updateError) {
-        console.error(updateError);
-        return;
+      if (!hasVisited) {
+        currentCount++;
+
+        // Update count in Supabase
+        const { error: updateError } = await supabase
+          .from("visitors")
+          .update({ count: currentCount })
+          .eq("id", 1);
+
+        if (updateError) {
+          console.error(updateError);
+          return;
+        }
+
+        // Save browser flag
+        localStorage.setItem("portfolio_visited", "true");
       }
 
-      setCount(newCount);
+      setCount(currentCount);
     };
 
-    updateVisitor();
+    handleVisitor();
   }, []);
 
   return (
     <div className="visitor-counter glass">
-      👁 Visitors : <span>{count}</span>
+      👁️ Visitors : <span>{count}</span>
     </div>
   );
 }

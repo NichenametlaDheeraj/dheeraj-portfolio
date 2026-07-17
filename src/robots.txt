@@ -1,0 +1,5 @@
+User-agent: *
+
+Allow: /
+
+Sitemap: https://dheeraj-portfolio-xr8g.vercel.app/sitemap.xml
