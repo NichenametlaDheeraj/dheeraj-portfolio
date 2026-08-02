@@ -3,6 +3,14 @@ import { FaGithub } from "react-icons/fa";
 
 const projects = [
   {
+    title: "KRISHISETU",
+    image: "/projects/krishisetu.png",
+    tech: ["React", "Django", "MySQL"],
+    description:
+      "A modern agriculture marketplace connecting farmers and consumers directly. Features authentication, product listings, shopping cart, and order management.",
+    github: "https://github.com/harish-krishnapuram/krishisetu",
+  },
+  {
     title: "Inventory Management System",
     image: "/projects/inventory.png",
     tech: ["Python", "MySQL"],
@@ -42,7 +50,7 @@ const projects = [
 
 function Projects() {
   return (
-    <section id="projects" className="projects"data-aos="fade-up">
+    <section id="projects" className="projects" data-aos="fade-up">
       <div className="container">
         <h2 className="section-title">Featured Projects</h2>
 
