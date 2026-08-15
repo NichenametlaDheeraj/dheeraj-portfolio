@@ -3,11 +3,19 @@ import { supabase, isSupabaseConfigured } from "../lib/supabase";
 import { sendVisitNotification } from "../lib/notifications";
 
 const SESSION_KEY = "portfolio_session_counted";
+const CACHE_KEY = "portfolio_visitor_count_cache";
 const RECORD_ID = 1;
+const FALLBACK_HITS_URL = "https://hits.sh/dheeraj-portfolio-xr8g.vercel.app.svg";
 
 export function useVisitorCount() {
-  const [count, setCount] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [count, setCount] = useState(() => {
+    const cached = localStorage.getItem(CACHE_KEY);
+    return cached ? parseInt(cached, 10) : null;
+  });
+  const [loading, setLoading] = useState(() => {
+    const cached = localStorage.getItem(CACHE_KEY);
+    return !cached;
+  });
   const [error, setError] = useState(null);
   const hasExecuted = useRef(false);
 
@@ -16,64 +24,55 @@ export function useVisitorCount() {
     hasExecuted.current = true;
 
     async function fetchOrIncrementCount() {
-      // Always trigger visit notification once per session regardless of Supabase state
+      // Trigger email notification once per session
       sendVisitNotification();
 
-      if (!isSupabaseConfigured || !supabase) {
-        console.warn(
-          "Supabase environment variables (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY) not set."
-        );
-        setLoading(false);
-        setError("Supabase env vars missing");
-        return;
-      }
+      const isSessionCounted = sessionStorage.getItem(SESSION_KEY) === "true";
 
-      try {
-        const isSessionCounted =
-          sessionStorage.getItem(SESSION_KEY) === "true";
-
-        if (!isSessionCounted) {
-          // 1. Try atomic RPC function if created in Supabase
-          const { data: rpcData, error: rpcError } = await supabase.rpc(
-            "increment_visitor_count"
-          );
-
-          if (!rpcError && (typeof rpcData === "number" || typeof rpcData === "string")) {
-            sessionStorage.setItem(SESSION_KEY, "true");
-            setCount(Number(rpcData));
-            setLoading(false);
-            return;
-          }
-
-          // 2. Direct fallback using existing "visitors" table & "count" column
-          const { data: selectData, error: selectError } = await supabase
-            .from("visitors")
-            .select("count")
-            .eq("id", RECORD_ID)
-            .maybeSingle();
-
-          let currentVal = 0;
-          if (!selectError && selectData && selectData.count !== undefined) {
-            currentVal = Number(selectData.count);
-          }
-
-          const nextVal = currentVal + 1;
-
-          const { error: upsertErr } = await supabase
-            .from("visitors")
-            .upsert(
-              {
-                id: RECORD_ID,
-                count: nextVal,
-              },
-              { onConflict: "id" }
+      // 1. Primary: Try Supabase if env vars are present
+      if (isSupabaseConfigured && supabase) {
+        try {
+          if (!isSessionCounted) {
+            // Try RPC increment function
+            const { data: rpcData, error: rpcError } = await supabase.rpc(
+              "increment_visitor_count"
             );
 
-          if (!upsertErr) {
-            sessionStorage.setItem(SESSION_KEY, "true");
-            setCount(nextVal);
-          } else {
-            // Fallback: try update if upsert isn't permitted
+            if (!rpcError && (typeof rpcData === "number" || typeof rpcData === "string")) {
+              const val = Number(rpcData);
+              sessionStorage.setItem(SESSION_KEY, "true");
+              localStorage.setItem(CACHE_KEY, val.toString());
+              setCount(val);
+              setLoading(false);
+              return;
+            }
+
+            // Fallback: Direct select & upsert on "visitors" table
+            const { data: selectData, error: selectError } = await supabase
+              .from("visitors")
+              .select("count")
+              .eq("id", RECORD_ID)
+              .maybeSingle();
+
+            let currentVal = 0;
+            if (!selectError && selectData && selectData.count !== undefined) {
+              currentVal = Number(selectData.count);
+            }
+
+            const nextVal = currentVal + 1;
+
+            const { error: upsertErr } = await supabase
+              .from("visitors")
+              .upsert({ id: RECORD_ID, count: nextVal }, { onConflict: "id" });
+
+            if (!upsertErr) {
+              sessionStorage.setItem(SESSION_KEY, "true");
+              localStorage.setItem(CACHE_KEY, nextVal.toString());
+              setCount(nextVal);
+              setLoading(false);
+              return;
+            }
+
             const { error: updateErr } = await supabase
               .from("visitors")
               .update({ count: nextVal })
@@ -81,32 +80,56 @@ export function useVisitorCount() {
 
             if (!updateErr) {
               sessionStorage.setItem(SESSION_KEY, "true");
+              localStorage.setItem(CACHE_KEY, nextVal.toString());
               setCount(nextVal);
-            } else {
-              console.warn("Visitor count update notice:", updateErr.message);
-              setCount(currentVal || null);
+              setLoading(false);
+              return;
+            }
+          } else {
+            // Read current count from Supabase
+            const { data: selectData, error: selectErr } = await supabase
+              .from("visitors")
+              .select("count")
+              .eq("id", RECORD_ID)
+              .maybeSingle();
+
+            if (!selectErr && selectData && selectData.count !== undefined) {
+              const val = Number(selectData.count);
+              localStorage.setItem(CACHE_KEY, val.toString());
+              setCount(val);
+              setLoading(false);
+              return;
             }
           }
-        } else {
-          // Session already counted: Read current count from "visitors" table
-          const { data: selectData, error: selectErr } = await supabase
-            .from("visitors")
-            .select("count")
-            .eq("id", RECORD_ID)
-            .maybeSingle();
+        } catch (sbErr) {
+          console.warn("Supabase fetch notice:", sbErr.message);
+        }
+      }
 
-          if (!selectErr && selectData && selectData.count !== undefined) {
-            setCount(Number(selectData.count));
-          } else {
-            console.warn("Visitor count fetch notice:", selectErr?.message);
+      // 2. Secondary: Edge hit counter service (works automatically without requiring env vars)
+      try {
+        const res = await fetch(FALLBACK_HITS_URL);
+        if (res.ok) {
+          const svgText = await res.text();
+          const match = svgText.match(/hits:\s*(\d+)/i);
+          if (match && match[1]) {
+            const hitsVal = parseInt(match[1], 10);
+            sessionStorage.setItem(SESSION_KEY, "true");
+            localStorage.setItem(CACHE_KEY, hitsVal.toString());
+            setCount(hitsVal);
+            setLoading(false);
+            return;
           }
         }
-      } catch (err) {
-        console.warn("Visitor counter notice:", err.message);
-        setError(err.message);
-      } finally {
-        setLoading(false);
+      } catch (hitsErr) {
+        console.warn("Hits counter service notice:", hitsErr.message);
       }
+
+      // 3. Final Fallback: Cached value or default 1
+      const cached = localStorage.getItem(CACHE_KEY);
+      const fallbackVal = cached ? parseInt(cached, 10) : 1;
+      setCount(fallbackVal);
+      setLoading(false);
     }
 
     fetchOrIncrementCount();
