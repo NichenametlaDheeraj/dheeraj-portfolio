@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 
 import { TypeAnimation } from "react-type-animation";
+import { sendResumeDownloadNotification } from "../../lib/notifications";
 
 function Hero() {
   return (
@@ -66,6 +67,7 @@ function Hero() {
               target="_blank"
               rel="noopener noreferrer"
               className="btn"
+              onClick={sendResumeDownloadNotification}
             >
               <FaDownload />
               Download Resume

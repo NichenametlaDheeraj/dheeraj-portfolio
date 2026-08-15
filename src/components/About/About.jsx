@@ -1,5 +1,6 @@
 import "./About.css";
 import { FaUserGraduate, FaLaptopCode, FaPython, FaDatabase } from "react-icons/fa";
+import { sendResumeDownloadNotification } from "../../lib/notifications";
 
 function About() {
   return (
@@ -29,7 +30,13 @@ function About() {
               a skilled Software Engineer.
             </p>
 
-            <a href="/resume.pdf" download className="btn">
+            <a
+              href="/Resume_Dheeraj_Nichenametla.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn"
+              onClick={sendResumeDownloadNotification}
+            >
               Download Resume
             </a>
 

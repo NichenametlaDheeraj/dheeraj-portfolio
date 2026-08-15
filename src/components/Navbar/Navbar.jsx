@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./Navbar.css";
 import { FaBars, FaTimes } from "react-icons/fa";
 
+import { sendResumeDownloadNotification } from "../../lib/notifications";
+
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -80,6 +82,7 @@ function Navbar() {
         target="_blank"
         rel="noopener noreferrer"
         className="resume-btn"
+        onClick={sendResumeDownloadNotification}
       >
         Resume
       </a>
