@@ -1,4 +1,17 @@
 export default async function handler(req, res) {
+  const apiKey = (process.env.RESEND_API_KEY || "").trim();
+  const toEmail = (process.env.NOTIFICATION_EMAIL || "").trim();
+
+  // GET request: Diagnostics & Health Check
+  if (req.method === "GET") {
+    return res.status(200).json({
+      status: "online",
+      apiKeyConfigured: Boolean(apiKey),
+      notificationEmailConfigured: Boolean(toEmail),
+      targetEmail: toEmail ? `${toEmail.slice(0, 3)}***@${toEmail.split("@")[1] || ""}` : "not set",
+    });
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -13,9 +26,6 @@ export default async function handler(req, res) {
   }
 
   const { type, page, referrer, userAgent } = body;
-
-  const apiKey = (process.env.RESEND_API_KEY || "").trim();
-  const toEmail = (process.env.NOTIFICATION_EMAIL || "").trim();
 
   if (!apiKey || !toEmail) {
     console.warn("Notification skipped: RESEND_API_KEY or NOTIFICATION_EMAIL not set.");
