@@ -5,12 +5,18 @@ import { sendVisitNotification } from "../lib/notifications";
 const SESSION_KEY = "portfolio_session_counted";
 const CACHE_KEY = "portfolio_visitor_count_cache";
 const RECORD_ID = 1;
+const BASE_OFFSET = 48; // Baseline offset so existing 49 views are preserved
 const FALLBACK_HITS_URL = "https://hits.sh/dheeraj-portfolio-xr8g.vercel.app.svg";
+
+function formatVisitorCount(rawVal) {
+  const num = Number(rawVal) || 0;
+  return num >= 49 ? num : BASE_OFFSET + num;
+}
 
 export function useVisitorCount() {
   const [count, setCount] = useState(() => {
     const cached = localStorage.getItem(CACHE_KEY);
-    return cached ? parseInt(cached, 10) : null;
+    return cached ? formatVisitorCount(parseInt(cached, 10)) : 49;
   });
   const [loading, setLoading] = useState(() => {
     const cached = localStorage.getItem(CACHE_KEY);
@@ -33,28 +39,26 @@ export function useVisitorCount() {
       if (isSupabaseConfigured && supabase) {
         try {
           if (!isSessionCounted) {
-            // Try RPC increment function
             const { data: rpcData, error: rpcError } = await supabase.rpc(
               "increment_visitor_count"
             );
 
             if (!rpcError && (typeof rpcData === "number" || typeof rpcData === "string")) {
-              const val = Number(rpcData);
+              const formatted = formatVisitorCount(rpcData);
               sessionStorage.setItem(SESSION_KEY, "true");
-              localStorage.setItem(CACHE_KEY, val.toString());
-              setCount(val);
+              localStorage.setItem(CACHE_KEY, formatted.toString());
+              setCount(formatted);
               setLoading(false);
               return;
             }
 
-            // Fallback: Direct select & upsert on "visitors" table
             const { data: selectData, error: selectError } = await supabase
               .from("visitors")
               .select("count")
               .eq("id", RECORD_ID)
               .maybeSingle();
 
-            let currentVal = 0;
+            let currentVal = 48;
             if (!selectError && selectData && selectData.count !== undefined) {
               currentVal = Number(selectData.count);
             }
@@ -66,9 +70,10 @@ export function useVisitorCount() {
               .upsert({ id: RECORD_ID, count: nextVal }, { onConflict: "id" });
 
             if (!upsertErr) {
+              const formatted = formatVisitorCount(nextVal);
               sessionStorage.setItem(SESSION_KEY, "true");
-              localStorage.setItem(CACHE_KEY, nextVal.toString());
-              setCount(nextVal);
+              localStorage.setItem(CACHE_KEY, formatted.toString());
+              setCount(formatted);
               setLoading(false);
               return;
             }
@@ -79,14 +84,14 @@ export function useVisitorCount() {
               .eq("id", RECORD_ID);
 
             if (!updateErr) {
+              const formatted = formatVisitorCount(nextVal);
               sessionStorage.setItem(SESSION_KEY, "true");
-              localStorage.setItem(CACHE_KEY, nextVal.toString());
-              setCount(nextVal);
+              localStorage.setItem(CACHE_KEY, formatted.toString());
+              setCount(formatted);
               setLoading(false);
               return;
             }
           } else {
-            // Read current count from Supabase
             const { data: selectData, error: selectErr } = await supabase
               .from("visitors")
               .select("count")
@@ -94,9 +99,9 @@ export function useVisitorCount() {
               .maybeSingle();
 
             if (!selectErr && selectData && selectData.count !== undefined) {
-              const val = Number(selectData.count);
-              localStorage.setItem(CACHE_KEY, val.toString());
-              setCount(val);
+              const formatted = formatVisitorCount(selectData.count);
+              localStorage.setItem(CACHE_KEY, formatted.toString());
+              setCount(formatted);
               setLoading(false);
               return;
             }
@@ -106,17 +111,18 @@ export function useVisitorCount() {
         }
       }
 
-      // 2. Secondary: Edge hit counter service (works automatically without requiring env vars)
+      // 2. Secondary: Edge hit counter service
       try {
         const res = await fetch(FALLBACK_HITS_URL);
         if (res.ok) {
           const svgText = await res.text();
           const match = svgText.match(/hits:\s*(\d+)/i);
           if (match && match[1]) {
-            const hitsVal = parseInt(match[1], 10);
+            const rawVal = parseInt(match[1], 10);
+            const formatted = formatVisitorCount(rawVal);
             sessionStorage.setItem(SESSION_KEY, "true");
-            localStorage.setItem(CACHE_KEY, hitsVal.toString());
-            setCount(hitsVal);
+            localStorage.setItem(CACHE_KEY, formatted.toString());
+            setCount(formatted);
             setLoading(false);
             return;
           }
@@ -125,9 +131,9 @@ export function useVisitorCount() {
         console.warn("Hits counter service notice:", hitsErr.message);
       }
 
-      // 3. Final Fallback: Cached value or default 1
+      // 3. Final Fallback: Cached value or default 49
       const cached = localStorage.getItem(CACHE_KEY);
-      const fallbackVal = cached ? parseInt(cached, 10) : 1;
+      const fallbackVal = cached ? formatVisitorCount(parseInt(cached, 10)) : 49;
       setCount(fallbackVal);
       setLoading(false);
     }
