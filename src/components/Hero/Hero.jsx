@@ -116,8 +116,9 @@ function Hero() {
           <div className="profile-card">
 
             <img
-              src="/profile.jpeg"
-              alt="Dheeraj Nichenametla"
+              src="/dheeraj-nichenametla.jpeg"
+              alt="Dheeraj Nichenametla - Python Backend & Full Stack Developer"
+              title="Dheeraj Nichenametla"
             />
 
           </div>
