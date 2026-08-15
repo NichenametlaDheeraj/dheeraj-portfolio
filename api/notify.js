@@ -3,10 +3,19 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: "Method not allowed" });
   }
 
-  const { type, page, referrer, userAgent } = req.body || {};
+  let body = req.body || {};
+  if (typeof body === "string") {
+    try {
+      body = JSON.parse(body);
+    } catch (e) {
+      body = {};
+    }
+  }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.NOTIFICATION_EMAIL;
+  const { type, page, referrer, userAgent } = body;
+
+  const apiKey = (process.env.RESEND_API_KEY || "").trim();
+  const toEmail = (process.env.NOTIFICATION_EMAIL || "").trim();
 
   if (!apiKey || !toEmail) {
     console.warn("Notification skipped: RESEND_API_KEY or NOTIFICATION_EMAIL not set.");
@@ -64,7 +73,7 @@ export default async function handler(req, res) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Portfolio Activity <onboarding@resend.dev>",
+        from: "onboarding@resend.dev",
         to: [toEmail],
         subject: subject,
         html: htmlContent,
