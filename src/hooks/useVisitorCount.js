@@ -47,7 +47,7 @@ export function useVisitorCount() {
               const formatted = formatVisitorCount(rpcData);
               sessionStorage.setItem(SESSION_KEY, "true");
               localStorage.setItem(CACHE_KEY, formatted.toString());
-              setCount(formatted);
+              setCount((prev) => Math.max(prev || 49, formatted));
               setLoading(false);
               return;
             }
@@ -73,7 +73,7 @@ export function useVisitorCount() {
               const formatted = formatVisitorCount(nextVal);
               sessionStorage.setItem(SESSION_KEY, "true");
               localStorage.setItem(CACHE_KEY, formatted.toString());
-              setCount(formatted);
+              setCount((prev) => Math.max(prev || 49, formatted));
               setLoading(false);
               return;
             }
@@ -87,11 +87,12 @@ export function useVisitorCount() {
               const formatted = formatVisitorCount(nextVal);
               sessionStorage.setItem(SESSION_KEY, "true");
               localStorage.setItem(CACHE_KEY, formatted.toString());
-              setCount(formatted);
+              setCount((prev) => Math.max(prev || 49, formatted));
               setLoading(false);
               return;
             }
           } else {
+            // Read latest count from Supabase
             const { data: selectData, error: selectErr } = await supabase
               .from("visitors")
               .select("count")
@@ -101,7 +102,7 @@ export function useVisitorCount() {
             if (!selectErr && selectData && selectData.count !== undefined) {
               const formatted = formatVisitorCount(selectData.count);
               localStorage.setItem(CACHE_KEY, formatted.toString());
-              setCount(formatted);
+              setCount((prev) => Math.max(prev || 49, formatted));
               setLoading(false);
               return;
             }
@@ -113,7 +114,11 @@ export function useVisitorCount() {
 
       // 2. Secondary: Edge hit counter service
       try {
-        const res = await fetch(FALLBACK_HITS_URL);
+        const fetchUrl = isSessionCounted
+          ? `${FALLBACK_HITS_URL}?nocount=1`
+          : FALLBACK_HITS_URL;
+
+        const res = await fetch(fetchUrl);
         if (res.ok) {
           const svgText = await res.text();
           const match = svgText.match(/hits:\s*(\d+)/i);
@@ -122,7 +127,7 @@ export function useVisitorCount() {
             const formatted = formatVisitorCount(rawVal);
             sessionStorage.setItem(SESSION_KEY, "true");
             localStorage.setItem(CACHE_KEY, formatted.toString());
-            setCount(formatted);
+            setCount((prev) => Math.max(prev || 49, formatted));
             setLoading(false);
             return;
           }
@@ -131,10 +136,10 @@ export function useVisitorCount() {
         console.warn("Hits counter service notice:", hitsErr.message);
       }
 
-      // 3. Final Fallback: Cached value or default 49
+      // 3. Final Fallback
       const cached = localStorage.getItem(CACHE_KEY);
       const fallbackVal = cached ? formatVisitorCount(parseInt(cached, 10)) : 49;
-      setCount(fallbackVal);
+      setCount((prev) => Math.max(prev || 49, fallbackVal));
       setLoading(false);
     }
 
