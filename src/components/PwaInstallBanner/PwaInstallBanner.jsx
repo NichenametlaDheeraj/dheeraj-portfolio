@@ -85,14 +85,13 @@ function PwaInstallBanner() {
               <img src="/icons/icon-192.png" alt="Dheeraj Portfolio Icon" />
             </div>
             <div className="pwa-banner-info">
-              <h4>Install Dheeraj Portfolio</h4>
-              <p>Add to home screen for 1-tap fast access</p>
+              <h4 className="pwa-title">Install Dheeraj Portfolio</h4>
+              <span className="pwa-subtitle">dheeraj-portfolio-xr8g.vercel.app</span>
             </div>
           </div>
 
           <div className="pwa-banner-actions">
             <button className="pwa-install-btn" onClick={handleInstallClick}>
-              <FaDownload className="btn-icon" />
               Install
             </button>
 
