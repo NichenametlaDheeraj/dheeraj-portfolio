@@ -14,6 +14,7 @@ import Achievements from "./components/Achievements/Achievements";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import VisitorCounter from "./components/VisitorCounter/VisitorCounter";
+import PwaInstallBanner from "./components/PwaInstallBanner/PwaInstallBanner";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -50,6 +51,9 @@ function App() {
       <Achievements />
       <Contact />
       <Footer />
+
+      {/* In-Website PWA Install Notification Bar */}
+      <PwaInstallBanner />
     </>
   );
 }
