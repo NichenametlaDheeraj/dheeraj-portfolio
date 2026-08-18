@@ -1,15 +1,25 @@
 {
-  "name": "Dheeraj Nichenametla",
-  "short_name": "Dheeraj",
+  "name": "Dheeraj Nichenametla - Portfolio",
+  "short_name": "Dheeraj Portfolio",
+  "description": "Personal portfolio of Dheeraj Nichenametla - Python Developer, Django Developer, React Developer, Machine Learning Enthusiast and Generative AI Learner.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/profile.png",
+      "src": "/icons/icon-192.png",
       "sizes": "192x192",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }
