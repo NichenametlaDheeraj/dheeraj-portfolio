@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./PwaInstallBanner.css";
 import { FaTimes } from "react-icons/fa";
 
@@ -9,6 +9,16 @@ const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 function PwaInstallBanner() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [showBanner, setShowBanner] = useState(false);
+  const [isSlidingUp, setIsSlidingUp] = useState(false);
+  const isNavigatingRef = useRef(false);
+
+  const isMobileDevice = () => {
+    const userAgentCheck = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobi/i.test(
+      navigator.userAgent
+    );
+    const isMobileViewport = window.matchMedia("(max-width: 768px)").matches;
+    return userAgentCheck || isMobileViewport;
+  };
 
   useEffect(() => {
     const isAlreadyInstalled = () => {
@@ -34,12 +44,13 @@ function PwaInstallBanner() {
 
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
+      setDeferredPrompt(e);
 
-      if (isAlreadyInstalled() || isDismissed()) {
+      // Only display the custom banner on supported mobile devices
+      if (!isMobileDevice() || isAlreadyInstalled() || isDismissed()) {
         return;
       }
 
-      setDeferredPrompt(e);
       setShowBanner(true);
     };
 
@@ -57,6 +68,50 @@ function PwaInstallBanner() {
       window.removeEventListener("appinstalled", handleAppInstalled);
     };
   }, []);
+
+  // Listen for navigation / scroll events to slide up and hide banner on mobile
+  useEffect(() => {
+    if (!showBanner) return;
+
+    const handleNavigation = () => {
+      if (isNavigatingRef.current) return;
+      isNavigatingRef.current = true;
+      setIsSlidingUp(true);
+      setTimeout(() => {
+        setShowBanner(false);
+        setIsSlidingUp(false);
+        isNavigatingRef.current = false;
+      }, 400);
+    };
+
+    const handleScroll = () => {
+      if (window.scrollY > 80) {
+        handleNavigation();
+      }
+    };
+
+    const handleAnchorClick = (e) => {
+      const target = e.target.closest("a");
+      if (target) {
+        const href = target.getAttribute("href");
+        if (href && (href.startsWith("#") || href.includes("#"))) {
+          handleNavigation();
+        }
+      }
+    };
+
+    window.addEventListener("hashchange", handleNavigation);
+    window.addEventListener("popstate", handleNavigation);
+    window.addEventListener("scroll", handleScroll);
+    document.addEventListener("click", handleAnchorClick);
+
+    return () => {
+      window.removeEventListener("hashchange", handleNavigation);
+      window.removeEventListener("popstate", handleNavigation);
+      window.removeEventListener("scroll", handleScroll);
+      document.removeEventListener("click", handleAnchorClick);
+    };
+  }, [showBanner]);
 
   const handleInstallClick = async () => {
     if (!deferredPrompt) return;
@@ -79,7 +134,7 @@ function PwaInstallBanner() {
   if (!showBanner) return null;
 
   return (
-    <div className="pwa-banner-overlay">
+    <div className={`pwa-banner-overlay ${isSlidingUp ? "slide-up" : ""}`}>
       <div className="pwa-banner-card glass">
         <div className="pwa-banner-left">
           <div className="pwa-icon-box">
