@@ -69,9 +69,10 @@ function PwaInstallBanner() {
     };
   }, []);
 
-  // Listen for navigation / scroll events to slide up and hide banner on mobile
   useEffect(() => {
     if (!showBanner) return;
+
+    const initialScrollY = window.scrollY;
 
     const handleNavigation = () => {
       if (isNavigatingRef.current) return;
@@ -85,7 +86,8 @@ function PwaInstallBanner() {
     };
 
     const handleScroll = () => {
-      if (window.scrollY > 80) {
+      // Hide banner only if user scrolls down past initial position by more than 60px
+      if (window.scrollY > initialScrollY + 60 || window.scrollY > 120) {
         handleNavigation();
       }
     };
