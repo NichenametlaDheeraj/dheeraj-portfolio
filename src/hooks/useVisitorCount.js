@@ -58,11 +58,12 @@ export function useVisitorCount() {
               .eq("id", RECORD_ID)
               .maybeSingle();
 
-            let currentVal = 48;
-            if (!selectError && selectData && selectData.count !== undefined) {
-              currentVal = Number(selectData.count);
+            if (selectError) {
+              // If Supabase returns 401 or permission error, don't spam further mutations
+              throw selectError;
             }
 
+            let currentVal = selectData && selectData.count !== undefined ? Number(selectData.count) : 48;
             const nextVal = currentVal + 1;
 
             const { error: upsertErr } = await supabase
@@ -70,20 +71,6 @@ export function useVisitorCount() {
               .upsert({ id: RECORD_ID, count: nextVal }, { onConflict: "id" });
 
             if (!upsertErr) {
-              const formatted = formatVisitorCount(nextVal);
-              sessionStorage.setItem(SESSION_KEY, "true");
-              localStorage.setItem(CACHE_KEY, formatted.toString());
-              setCount((prev) => Math.max(prev || 49, formatted));
-              setLoading(false);
-              return;
-            }
-
-            const { error: updateErr } = await supabase
-              .from("visitors")
-              .update({ count: nextVal })
-              .eq("id", RECORD_ID);
-
-            if (!updateErr) {
               const formatted = formatVisitorCount(nextVal);
               sessionStorage.setItem(SESSION_KEY, "true");
               localStorage.setItem(CACHE_KEY, formatted.toString());
@@ -108,35 +95,11 @@ export function useVisitorCount() {
             }
           }
         } catch (sbErr) {
-          console.warn("Supabase fetch notice:", sbErr.message);
+          // Quiet fallback if Supabase is unauthorized (401) or unconfigured
         }
       }
 
-      // 2. Secondary: Edge hit counter service
-      try {
-        const fetchUrl = isSessionCounted
-          ? `${FALLBACK_HITS_URL}?nocount=1`
-          : FALLBACK_HITS_URL;
-
-        const res = await fetch(fetchUrl);
-        if (res.ok) {
-          const svgText = await res.text();
-          const match = svgText.match(/hits:\s*(\d+)/i);
-          if (match && match[1]) {
-            const rawVal = parseInt(match[1], 10);
-            const formatted = formatVisitorCount(rawVal);
-            sessionStorage.setItem(SESSION_KEY, "true");
-            localStorage.setItem(CACHE_KEY, formatted.toString());
-            setCount((prev) => Math.max(prev || 49, formatted));
-            setLoading(false);
-            return;
-          }
-        }
-      } catch (hitsErr) {
-        console.warn("Hits counter service notice:", hitsErr.message);
-      }
-
-      // 3. Final Fallback
+      // 2. Fallback to cached or baseline count
       const cached = localStorage.getItem(CACHE_KEY);
       const fallbackVal = cached ? formatVisitorCount(parseInt(cached, 10)) : 49;
       setCount((prev) => Math.max(prev || 49, fallbackVal));
