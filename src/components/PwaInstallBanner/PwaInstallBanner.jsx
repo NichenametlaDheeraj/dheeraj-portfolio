@@ -2,9 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import "./PwaInstallBanner.css";
 import { FaTimes, FaMobileAlt } from "react-icons/fa";
 
-const DISMISSAL_KEY = "pwaInstallDismissedUntil";
+const DISMISSAL_KEY = "pwa_banner_dismissed_session";
 const INSTALLED_KEY = "pwaInstalled";
-const SEVEN_DAYS_MS = 7 * 24 * 60 * 60 * 1000;
 
 function PwaInstallBanner() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -15,6 +14,10 @@ function PwaInstallBanner() {
   const isScrollActiveRef = useRef(false);
 
   useEffect(() => {
+    // Clear legacy 7-day dismissal locks from testing so banner shows on all devices
+    localStorage.removeItem("pwaInstallDismissedUntil");
+    localStorage.removeItem("pwa_banner_dismissed");
+
     const isAlreadyInstalled = () => {
       return (
         window.matchMedia("(display-mode: standalone)").matches ||
@@ -25,11 +28,7 @@ function PwaInstallBanner() {
     };
 
     const isDismissed = () => {
-      const dismissedUntil = localStorage.getItem(DISMISSAL_KEY);
-      if (!dismissedUntil) return false;
-      const dismissedTime = Number(dismissedUntil);
-      if (isNaN(dismissedTime)) return false;
-      return Date.now() < dismissedTime;
+      return sessionStorage.getItem(DISMISSAL_KEY) === "true";
     };
 
     if (isAlreadyInstalled() || isDismissed()) {
@@ -39,7 +38,6 @@ function PwaInstallBanner() {
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      // Show banner after loader screen (2000ms) finishes
       setTimeout(() => {
         if (!isAlreadyInstalled() && !isDismissed()) {
           setShowBanner(true);
@@ -56,7 +54,7 @@ function PwaInstallBanner() {
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     window.addEventListener("appinstalled", handleAppInstalled);
 
-    // Fallback timer: show banner after loader screen (2500ms) finishes
+    // Fallback timer: ensure banner appears on ALL devices (Laptop, PC, Tablet, Mobile)
     const fallbackTimer = setTimeout(() => {
       if (!isAlreadyInstalled() && !isDismissed()) {
         setShowBanner(true);
@@ -77,7 +75,6 @@ function PwaInstallBanner() {
     isScrollActiveRef.current = false;
     const initialScrollY = window.scrollY;
 
-    // Grace period before activating scroll listener to prevent initial layout shifts from hiding banner
     const graceTimer = setTimeout(() => {
       isScrollActiveRef.current = true;
     }, 1000);
@@ -139,8 +136,7 @@ function PwaInstallBanner() {
   };
 
   const handleDismiss = () => {
-    const dismissedUntil = Date.now() + SEVEN_DAYS_MS;
-    localStorage.setItem(DISMISSAL_KEY, dismissedUntil.toString());
+    sessionStorage.setItem(DISMISSAL_KEY, "true");
     setShowBanner(false);
   };
 
@@ -185,12 +181,12 @@ function PwaInstallBanner() {
               </button>
             </div>
             <p className="pwa-guide-desc">
-              To install <strong>Dheeraj Portfolio</strong> on your phone:
+              To install <strong>Dheeraj Portfolio</strong> on your device:
             </p>
             <ol className="pwa-guide-steps">
-              <li>Tap the <strong>Share button</strong> or <strong>3 dots menu</strong> (⋮).</li>
-              <li>Tap <strong>"Add to Home Screen"</strong> or <strong>"Install app"</strong>.</li>
-              <li>Tap <strong>Install</strong> to add it to your home screen!</li>
+              <li>Open your browser menu (<strong>⋮</strong> or <strong>Share icon</strong>).</li>
+              <li>Select <strong>"Install app"</strong> or <strong>"Add to Home Screen / Desktop"</strong>.</li>
+              <li>Click <strong>Install</strong> to add it to your device!</li>
             </ol>
             <button className="pwa-guide-ok-btn" onClick={() => setShowGuideModal(false)}>
               Got it!
