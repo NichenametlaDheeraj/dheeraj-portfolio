@@ -12,6 +12,7 @@ function PwaInstallBanner() {
   const [showGuideModal, setShowGuideModal] = useState(false);
   const [isSlidingUp, setIsSlidingUp] = useState(false);
   const isNavigatingRef = useRef(false);
+  const isScrollActiveRef = useRef(false);
 
   useEffect(() => {
     const isAlreadyInstalled = () => {
@@ -38,9 +39,12 @@ function PwaInstallBanner() {
     const handleBeforeInstallPrompt = (e) => {
       e.preventDefault();
       setDeferredPrompt(e);
-      if (!isAlreadyInstalled() && !isDismissed()) {
-        setShowBanner(true);
-      }
+      // Show banner after loader screen (2000ms) finishes
+      setTimeout(() => {
+        if (!isAlreadyInstalled() && !isDismissed()) {
+          setShowBanner(true);
+        }
+      }, 2200);
     };
 
     const handleAppInstalled = () => {
@@ -52,11 +56,12 @@ function PwaInstallBanner() {
     window.addEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
     window.addEventListener("appinstalled", handleAppInstalled);
 
+    // Fallback timer: show banner after loader screen (2500ms) finishes
     const fallbackTimer = setTimeout(() => {
       if (!isAlreadyInstalled() && !isDismissed()) {
         setShowBanner(true);
       }
-    }, 1000);
+    }, 2500);
 
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstallPrompt);
@@ -65,10 +70,17 @@ function PwaInstallBanner() {
     };
   }, []);
 
+  // Listen for navigation / scroll events to slide up and hide banner
   useEffect(() => {
     if (!showBanner) return;
 
+    isScrollActiveRef.current = false;
     const initialScrollY = window.scrollY;
+
+    // Grace period before activating scroll listener to prevent initial layout shifts from hiding banner
+    const graceTimer = setTimeout(() => {
+      isScrollActiveRef.current = true;
+    }, 1000);
 
     const handleNavigation = () => {
       if (isNavigatingRef.current) return;
@@ -82,7 +94,8 @@ function PwaInstallBanner() {
     };
 
     const handleScroll = () => {
-      if (window.scrollY > initialScrollY + 60 || window.scrollY > 120) {
+      if (!isScrollActiveRef.current) return;
+      if (window.scrollY > initialScrollY + 80) {
         handleNavigation();
       }
     };
@@ -103,6 +116,7 @@ function PwaInstallBanner() {
     document.addEventListener("click", handleAnchorClick);
 
     return () => {
+      clearTimeout(graceTimer);
       window.removeEventListener("hashchange", handleNavigation);
       window.removeEventListener("popstate", handleNavigation);
       window.removeEventListener("scroll", handleScroll);
