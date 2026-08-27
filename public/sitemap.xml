@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-
     <loc>https://dheeraj-portfolio-xr8g.vercel.app/</loc>
-
-    <lastmod>2026-07-17</lastmod>
-
+    <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
-
     <priority>1.0</priority>
-
+    <image:image>
+      <image:loc>https://dheeraj-portfolio-xr8g.vercel.app/profile.png</image:loc>
+      <image:title>Dheeraj Nichenametla Profile Image</image:title>
+      <image:caption>Dheeraj Nichenametla - Python Backend Developer and Full Stack Software Engineer</image:caption>
+    </image:image>
   </url>
 
 </urlset>

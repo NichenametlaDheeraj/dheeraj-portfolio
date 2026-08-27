@@ -56,11 +56,11 @@ function Projects() {
 
         <div className="projects-grid">
           {projects.map((project, index) => (
-            <div className="project-card glass" key={index}>
+            <article className="project-card glass" key={index}>
               {project.image && (
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`Dheeraj Nichenametla - ${project.title} Project`}
                   className="project-image"
                 />
               )}
@@ -81,13 +81,14 @@ function Projects() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={`View ${project.title} source code on GitHub`}
                   >
                     <FaGithub />
                     <span>View Code</span>
                   </a>
                 </div>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>

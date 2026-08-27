@@ -25,76 +25,79 @@ function Navbar() {
   };
 
   return (
-    <nav className={scrolled ? "navbar active" : "navbar"}>
-      {/* Logo */}
-      <div className="logo">
-        <span>D</span>N
-      </div>
+    <header className="header-nav">
+      <nav className={scrolled ? "navbar active" : "navbar"} aria-label="Main Navigation">
+        {/* Logo */}
+        <div className="logo">
+          <span>D</span>N
+        </div>
 
-      {/* Navigation Links */}
-      <ul className={menuOpen ? "nav-links open" : "nav-links"}>
-        <li>
-          <a href="#home" onClick={closeMenu}>
-            Home
-          </a>
-        </li>
+        {/* Navigation Links */}
+        <ul className={menuOpen ? "nav-links open" : "nav-links"}>
+          <li>
+            <a href="#home" onClick={closeMenu}>
+              Home
+            </a>
+          </li>
 
-        <li>
-          <a href="#about" onClick={closeMenu}>
-            About
-          </a>
-        </li>
+          <li>
+            <a href="#about" onClick={closeMenu}>
+              About
+            </a>
+          </li>
 
-        <li>
-          <a href="#skills" onClick={closeMenu}>
-            Skills
-          </a>
-        </li>
+          <li>
+            <a href="#skills" onClick={closeMenu}>
+              Skills
+            </a>
+          </li>
 
-        <li>
-          <a href="#projects" onClick={closeMenu}>
-            Projects
-          </a>
-        </li>
+          <li>
+            <a href="#projects" onClick={closeMenu}>
+              Projects
+            </a>
+          </li>
 
-        <li>
-          <a href="#education" onClick={closeMenu}>
-            Education
-          </a>
-        </li>
+          <li>
+            <a href="#education" onClick={closeMenu}>
+              Education
+            </a>
+          </li>
 
-        <li>
-          <a href="#achievements" onClick={closeMenu}>
-            Achievements
-          </a>
-        </li>
+          <li>
+            <a href="#achievements" onClick={closeMenu}>
+              Achievements
+            </a>
+          </li>
 
-        <li>
-          <a href="#contact" onClick={closeMenu}>
-            Contact
-          </a>
-        </li>
-      </ul>
+          <li>
+            <a href="#contact" onClick={closeMenu}>
+              Contact
+            </a>
+          </li>
+        </ul>
 
-      {/* Resume Button */}
-      <a
-        href="/Resume_Dheeraj_Nichenametla.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="resume-btn"
-        onClick={sendResumeDownloadNotification}
-      >
-        Resume
-      </a>
+        {/* Resume Button */}
+        <a
+          href="/Resume_Dheeraj_Nichenametla.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="resume-btn"
+          onClick={sendResumeDownloadNotification}
+        >
+          Resume
+        </a>
 
-      {/* Mobile Menu Button */}
-      <div
-        className="menu-btn"
-        onClick={() => setMenuOpen(!menuOpen)}
-      >
-        {menuOpen ? <FaTimes /> : <FaBars />}
-      </div>
-    </nav>
+        {/* Mobile Menu Button */}
+        <div
+          className="menu-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle navigation menu"
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </div>
+      </nav>
+    </header>
   );
 }
 

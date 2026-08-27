@@ -43,13 +43,15 @@ function App() {
 
       {/* Portfolio Sections */}
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Education />
-      <Achievements />
-      <Contact />
+      <main id="main-content">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Education />
+        <Achievements />
+        <Contact />
+      </main>
       <Footer />
 
       {/* In-Website PWA Install Notification Bar */}
