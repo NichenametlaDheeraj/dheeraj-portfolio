@@ -29,7 +29,7 @@ function Hero() {
 
           <TypeAnimation
             sequence={[
-              "Python Full Stack Developer",
+              "Python Backend & Full-Stack Developer",
               2000,
 
               "Django Developer",
@@ -117,7 +117,7 @@ function Hero() {
 
             <img
               src="/profile.png"
-              alt="Dheeraj Nichenametla - Python Backend & Full Stack Developer"
+              alt="Dheeraj Nichenametla - Python Backend & Full-Stack Developer"
               title="Dheeraj Nichenametla"
             />
 

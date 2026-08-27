@@ -16,7 +16,7 @@ function Footer() {
         <h2>Dheeraj Nichenametla</h2>
 
         <p>
-          Python Backend Developer | React Learner | AI Enthusiast
+          Python Backend &amp; Full-Stack Developer | React Learner | AI Enthusiast
         </p>
 
         <div className="footer-social">

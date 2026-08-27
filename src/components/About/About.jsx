@@ -19,8 +19,7 @@ function About() {
 
             <p>
               I'm <strong>Dheeraj Nichenametla</strong>, a passionate
-              Computer Science student with a strong interest in
-              Backend Development and Full Stack Web Development.
+              Computer Science student and <strong>Python Backend & Full-Stack Developer</strong>.
             </p>
 
             <p>
