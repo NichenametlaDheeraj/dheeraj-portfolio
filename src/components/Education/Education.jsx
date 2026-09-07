@@ -27,7 +27,7 @@ const education = [
     icon: <FaGraduationCap />,
     year: "2021 - 2023",
     title: "Intermediate (Higher Secondary)",
-    place: "Nalanda Junior College, Vijayawada",
+    place: "Vijayawada Nalanda Junior College",
     description:
       "Completed Higher Secondary Education focusing on Mathematics, Physics, and Chemistry (MPC).",
   },

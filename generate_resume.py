@@ -208,7 +208,7 @@ def create_ats_resume(output_path):
         "<b>Python Full Stack Development Course</b> (Dec 2025 – Jul 2026)<br/>"
         "• Comprehensive training in building end-to-end applications with Python, Django backend APIs, React interfaces, and MySQL databases.",
         "<b>Intermediate (Higher Secondary - MPC)</b> (2021 – 2023)<br/>"
-        "<i>Nalanda Junior College, Vijayawada</i><br/>"
+        "<i>Vijayawada Nalanda Junior College</i><br/>"
         "• Higher Secondary Education with focus on Mathematics, Physics, and Chemistry.",
         "<b>Secondary School Certificate (SSC / 10th)</b> (Completed 2021)<br/>"
         "<i>Nava Bharath English Medium School</i><br/>"
