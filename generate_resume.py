@@ -195,18 +195,24 @@ def create_ats_resume(output_path):
     
     story.append(Spacer(1, 2))
 
-    # 5. EDUCATION & LEARNING
-    add_section_header("Education & Learning")
+    # 5. EDUCATION & CERTIFICATIONS
+    add_section_header("Education & Certifications")
     edu_items = [
         "<b>Bachelor of Science in Computer Science</b> (2023 – 2026)<br/>"
-        "<i>Government Degree College (Autonomous), Anantapur (Affiliated to Sri Krishnadevaraya University)</i><br/>"
-        "• Coursework: Core Computer Science, Data Structures, Relational Database Systems, Operating Systems, Web Technologies.",
-        "<b>Python Full Stack Development</b> (2025 – Present) | <i>Self-Directed Project Training</i><br/>"
-        "• Hands-on mastery in building end-to-end applications with Django backend APIs, React interfaces, and MySQL integration."
+        "<i>Government Degree College (Autonomous), Anantapuramu</i><br/>"
+        "• Coursework: Computer Science Fundamentals, Data Structures, Relational Database Systems, Operating Systems, Web Technologies.",
+        "<b>Python Full Stack Development Course</b> (Dec 2024 – Jul 2025)<br/>"
+        "• Comprehensive training in building end-to-end applications with Python, Django backend APIs, React interfaces, and MySQL databases.",
+        "<b>Intermediate (Higher Secondary - MPC)</b> (2021 – 2023)<br/>"
+        "<i>Nalanda Junior College, Vijayawada</i><br/>"
+        "• Higher Secondary Education with focus on Mathematics, Physics, and Chemistry.",
+        "<b>Secondary School Certificate (SSC / 10th)</b> (Completed 2021)<br/>"
+        "<i>Nava Bharath English Medium School</i><br/>"
+        "• Secondary School Education with strong foundation in Science and Mathematics."
     ]
     for edu in edu_items:
         story.append(Paragraph(edu, body_style))
-        story.append(Spacer(1, 3))
+        story.append(Spacer(1, 2.5))
 
     story.append(Spacer(1, 3))
 

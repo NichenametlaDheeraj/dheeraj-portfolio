@@ -10,27 +10,45 @@ const education = [
     icon: <FaGraduationCap />,
     year: "2023 - 2026",
     title: "Bachelor of Science (Computer Science)",
-    place: "Government Degree College (A), Anantapur",
+    place: "Government Degree College (Autonomous), Anantapuramu",
     description:
-      "Learning Computer Science fundamentals, programming, databases, web technologies, and software development.",
+      "Studying Computer Science fundamentals, Object-Oriented Programming, Database Systems, Web Development, and Data Structures.",
   },
 
   {
     icon: <FaLaptopCode />,
-    year: "2025 - Present",
+    year: "Dec 2024 - Jul 2025",
     title: "Python Full Stack Development",
-    place: "Self Learning",
+    place: "Course & Practical Implementation",
     description:
-      "Building projects with Python, Django, REST APIs, React, MySQL, Git, and GitHub.",
+      "Completed comprehensive training building full-stack web applications with Python, Django, REST APIs, React, MySQL, Git, and GitHub.",
+  },
+
+  {
+    icon: <FaGraduationCap />,
+    year: "2021 - 2023",
+    title: "Intermediate (Higher Secondary)",
+    place: "Nalanda Junior College, Vijayawada",
+    description:
+      "Completed Higher Secondary Education focusing on Mathematics, Physics, and Chemistry (MPC).",
+  },
+
+  {
+    icon: <FaGraduationCap />,
+    year: "2020 - 2021",
+    title: "Secondary School Certificate (SSC / 10th)",
+    place: "Nava Bharath English Medium School",
+    description:
+      "Completed Secondary School Education with a strong foundation in Science and Mathematics.",
   },
 
   {
     icon: <FaBrain />,
     year: "Currently Learning",
     title: "Machine Learning & Generative AI",
-    place: "Online Courses",
+    place: "Self Learning & Online Courses",
     description:
-      "Learning Machine Learning concepts, AI tools, and modern backend development practices.",
+      "Learning Machine Learning algorithms, Data Analysis (Pandas, NumPy), Generative AI tools, and advanced backend practices.",
   },
 ];
 
