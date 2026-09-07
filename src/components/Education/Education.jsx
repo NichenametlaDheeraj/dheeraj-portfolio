@@ -2,7 +2,6 @@ import "./Education.css";
 import {
   FaGraduationCap,
   FaLaptopCode,
-  FaBrain,
 } from "react-icons/fa";
 
 const education = [
@@ -40,15 +39,6 @@ const education = [
     place: "Nava Bharath English Medium School",
     description:
       "Completed Secondary School Education with a strong foundation in Science and Mathematics.",
-  },
-
-  {
-    icon: <FaBrain />,
-    year: "Currently Learning",
-    title: "Machine Learning & Generative AI",
-    place: "Self Learning & Online Courses",
-    description:
-      "Learning Machine Learning algorithms, Data Analysis (Pandas, NumPy), Generative AI tools, and advanced backend practices.",
   },
 ];
 
