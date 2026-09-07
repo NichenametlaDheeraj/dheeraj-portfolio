@@ -17,7 +17,7 @@ const education = [
 
   {
     icon: <FaLaptopCode />,
-    year: "Dec 2024 - Jul 2025",
+    year: "Dec 2025 - Jul 2026",
     title: "Python Full Stack Development",
     place: "Course & Practical Implementation",
     description:
