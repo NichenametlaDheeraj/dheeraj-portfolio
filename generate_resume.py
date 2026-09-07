@@ -14,7 +14,11 @@ def create_ats_resume(output_path):
         leftMargin=margin,
         rightMargin=margin,
         topMargin=margin,
-        bottomMargin=margin
+        bottomMargin=margin,
+        title="Dheeraj Nichenametla - Resume",
+        author="Dheeraj Nichenametla",
+        subject="Python Backend & Full-Stack Developer Resume",
+        keywords="Dheeraj Nichenametla, Resume, Python Developer, Django, React, Full Stack"
     )
 
     styles = getSampleStyleSheet()
