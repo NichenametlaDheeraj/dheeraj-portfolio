@@ -63,7 +63,7 @@ function Hero() {
           <div className="hero-buttons">
 
             <a
-              href="/Resume_Dheeraj_Nichenametla.pdf"
+              href="/Resume_Dheeraj_Nichenametla.pdf?v=2"
               target="_blank"
               rel="noopener noreferrer"
               className="btn"

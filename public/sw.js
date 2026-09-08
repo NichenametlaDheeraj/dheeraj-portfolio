@@ -1,4 +1,4 @@
-const CACHE_NAME = "dheeraj-portfolio-pwa-v1";
+const CACHE_NAME = "dheeraj-portfolio-pwa-v2";
 const ASSETS_TO_CACHE = [
   "/",
   "/index.html",
@@ -31,13 +31,14 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch Event - Network-First for HTML/APIs, Stale-While-Revalidate for static assets
+// Fetch Event - Network-First for HTML/APIs/PDFs, Stale-While-Revalidate for static assets
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
 
-  // Skip non-GET requests and API calls to prevent any API interference
+  // Skip non-GET requests, API calls, and PDF downloads to always get fresh network response
   if (
     event.request.method !== "GET" ||
+    url.pathname.endsWith(".pdf") ||
     url.pathname.startsWith("/api/") ||
     url.hostname.includes("supabase.co") ||
     url.hostname.includes("hits.sh") ||
