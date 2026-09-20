@@ -13,8 +13,8 @@ import Education from "./components/Education/Education";
 import Achievements from "./components/Achievements/Achievements";
 import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
-import VisitorCounter from "./components/VisitorCounter/VisitorCounter";
 import PwaInstallBanner from "./components/PwaInstallBanner/PwaInstallBanner";
+import { sendVisitNotification } from "./lib/notifications";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -28,9 +28,10 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Google Analytics - Track Page Visit
+  // Google Analytics & Visit Notifications
   useEffect(() => {
     logPageView();
+    sendVisitNotification();
   }, []);
 
   return (

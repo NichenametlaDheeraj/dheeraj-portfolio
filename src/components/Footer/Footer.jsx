@@ -6,8 +6,6 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
-import VisitorCounter from "../VisitorCounter/VisitorCounter";
-
 function Footer() {
   return (
     <footer className="footer">
@@ -36,9 +34,6 @@ function Footer() {
             <FaLinkedin />
           </a>
         </div>
-
-        {/* Visitor Counter */}
-        <VisitorCounter />
 
         <p className="copyright">
           Made with <FaHeart color="red" /> by Dheeraj Nichenametla
