@@ -3,12 +3,12 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://dheeraj-portfolio-xr8g.vercel.app/</loc>
+    <loc>https://dheerajnichenametla.in/</loc>
     <lastmod>2026-09-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://dheeraj-portfolio-xr8g.vercel.app/profile.png</image:loc>
+      <image:loc>https://dheerajnichenametla.in/profile.png</image:loc>
       <image:title>Dheeraj Nichenametla Profile Image</image:title>
       <image:caption>Dheeraj Nichenametla - Python Backend Developer and Full Stack Software Engineer</image:caption>
     </image:image>
