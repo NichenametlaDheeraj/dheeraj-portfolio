@@ -16,12 +16,34 @@ export default function Contact() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (statusMessage.text) {
+      setStatusMessage({ type: "", text: "", showFallback: false });
+    }
+  };
+
+  const getMailtoLink = () => {
+    const subject = encodeURIComponent(formData.title || `Portfolio Inquiry from ${formData.name || 'Visitor'}`);
+    const body = encodeURIComponent(
+      `Hi Dheeraj,\n\n${formData.message || 'I would like to get in touch with you.'}\n\nBest regards,\n${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}`
+    );
+    return `mailto:dheerajnichenametla@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const sendEmail = async (e) => {
     e.preventDefault();
+    
+    // Explicit client-side validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.title.trim() || !formData.message.trim()) {
+      setStatusMessage({
+        type: "error",
+        text: "⚠️ Please fill in all fields (Name, Email, Subject, and Message) before sending.",
+        showFallback: false
+      });
+      return;
+    }
+
     setLoading(true);
-    setStatusMessage({ type: "", text: "", showFallback: false });
+    setStatusMessage({ type: "info", text: "Sending your message...", showFallback: false });
 
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_jmnfl0k";
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_8nveing";
@@ -56,9 +78,9 @@ export default function Contact() {
 
       setTimeout(() => {
         setStatusMessage({ type: "", text: "", showFallback: false });
-      }, 6000);
+      }, 7000);
     } catch (primaryError) {
-      console.warn("Primary emailjs.send failed, attempting sendForm with v4 options...", primaryError);
+      console.warn("Primary emailjs.send failed, attempting sendForm fallback...", primaryError);
       
       try {
         // 2. Secondary Attempt: Send via sendForm with v4 options object
@@ -75,21 +97,22 @@ export default function Contact() {
       } catch (secondaryError) {
         console.error("EmailJS Service Error:", secondaryError);
         setLoading(false);
+        
+        // 3. Fail-safe Direct Action: Launch mail client automatically so message is never lost!
+        window.location.href = getMailtoLink();
+
         setStatusMessage({
-          type: "error",
-          text: "Could not send automatically via EmailJS (Service API key or quota issue).",
+          type: "info",
+          text: "📬 Opening your default email application to deliver the message directly to dheerajnichenametla@gmail.com!",
           showFallback: true
         });
       }
     }
   };
 
-  const getMailtoLink = () => {
-    const subject = encodeURIComponent(formData.title || "Portfolio Inquiry");
-    const body = encodeURIComponent(
-      `Hi Dheeraj,\n\n${formData.message}\n\nBest regards,\n${formData.name || 'Visitor'} (${formData.email || 'No email specified'})`
-    );
-    return `mailto:dheerajnichenametla@gmail.com?subject=${subject}&body=${body}`;
+  const handleDirectEmailClick = (e) => {
+    e.preventDefault();
+    window.location.href = getMailtoLink();
   };
 
   return (
@@ -220,18 +243,23 @@ export default function Contact() {
                 />
               </div>
 
-              <button type="submit" disabled={loading} className="btn-primary submit-btn">
-                {loading ? "Sending..." : <>Send Message <FaPaperPlane /></>}
-              </button>
+              <div className="form-actions-row">
+                <button type="submit" disabled={loading} className="btn-primary submit-btn">
+                  {loading ? "Sending..." : <>Send Message <FaPaperPlane /></>}
+                </button>
+                <button type="button" onClick={handleDirectEmailClick} className="btn-secondary direct-mail-btn">
+                  <FaEnvelope /> Open Email App
+                </button>
+              </div>
 
               {statusMessage.text && (
                 <div className={`form-status ${statusMessage.type}`}>
                   <p>{statusMessage.text}</p>
                   {statusMessage.showFallback && (
                     <div className="status-fallback">
-                      <p className="fallback-text">Send directly via your email client:</p>
+                      <p className="fallback-text">If your email client didn't open automatically, click below:</p>
                       <a href={getMailtoLink()} className="fallback-btn">
-                        <FaEnvelope /> Open Email App
+                        <FaEnvelope /> Open Email App (Direct)
                       </a>
                     </div>
                   )}
@@ -239,7 +267,7 @@ export default function Contact() {
               )}
 
               <p className="direct-email-note">
-                Or email directly to: <a href={getMailtoLink()}>dheerajnichenametla@gmail.com</a>
+                Or email directly to: <a href="mailto:dheerajnichenametla@gmail.com">dheerajnichenametla@gmail.com</a>
               </p>
             </form>
           </div>

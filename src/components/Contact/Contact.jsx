@@ -19,12 +19,33 @@ function Contact() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    if (statusMessage.text) {
+      setStatusMessage({ type: "", text: "", showFallback: false });
+    }
+  };
+
+  const getMailtoLink = () => {
+    const subject = encodeURIComponent(formData.title || `Portfolio Inquiry from ${formData.name || 'Visitor'}`);
+    const body = encodeURIComponent(
+      `Hi Dheeraj,\n\n${formData.message || 'I would like to get in touch with you.'}\n\nBest regards,\n${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}`
+    );
+    return `mailto:dheerajnichenametla@gmail.com?subject=${subject}&body=${body}`;
   };
 
   const sendEmail = async (e) => {
     e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.email.trim() || !formData.title.trim() || !formData.message.trim()) {
+      setStatusMessage({
+        type: "error",
+        text: "⚠️ Please fill in all fields (Name, Email, Subject, and Message) before sending.",
+        showFallback: false
+      });
+      return;
+    }
+
     setLoading(true);
-    setStatusMessage({ type: "", text: "", showFallback: false });
+    setStatusMessage({ type: "info", text: "Sending your message...", showFallback: false });
 
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_jmnfl0k";
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_8nveing";
@@ -76,21 +97,21 @@ function Contact() {
       } catch (secondaryError) {
         console.error("EmailJS Error:", secondaryError);
         setLoading(false);
+        
+        window.location.href = getMailtoLink();
+
         setStatusMessage({
-          type: "error",
-          text: "Could not send automatically via EmailJS API.",
+          type: "info",
+          text: "📬 Opening your default email application to deliver the message directly!",
           showFallback: true
         });
       }
     }
   };
 
-  const getMailtoLink = () => {
-    const subject = encodeURIComponent(formData.title || "Portfolio Inquiry");
-    const body = encodeURIComponent(
-      `Hi Dheeraj,\n\n${formData.message}\n\nBest regards,\n${formData.name || 'Visitor'} (${formData.email || 'No email specified'})`
-    );
-    return `mailto:dheerajnichenametla@gmail.com?subject=${subject}&body=${body}`;
+  const handleDirectEmailClick = (e) => {
+    e.preventDefault();
+    window.location.href = getMailtoLink();
   };
 
   return (
@@ -187,9 +208,14 @@ function Contact() {
               required
             />
 
-            <button type="submit" disabled={loading}>
-              {loading ? "Sending..." : "Send Message"}
-            </button>
+            <div style={{ display: 'flex', gap: '12px' }}>
+              <button type="submit" disabled={loading} style={{ flex: 1 }}>
+                {loading ? "Sending..." : "Send Message"}
+              </button>
+              <button type="button" onClick={handleDirectEmailClick} style={{ backgroundColor: '#1E293B', color: '#fff', padding: '12px 16px', borderRadius: '8px', cursor: 'pointer' }}>
+                Email App
+              </button>
+            </div>
 
             {statusMessage.text && (
               <div className={`status ${statusMessage.type}`}>
