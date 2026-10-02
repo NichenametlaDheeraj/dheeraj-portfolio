@@ -21,13 +21,12 @@ function Contact() {
 
     setLoading(true);
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_jmnfl0k";
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_8nveing";
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "KxxmkuRIQNqaq_FAO";
+
     emailjs
-      .sendForm(
-        "service_jmnfl0k",
-        "template_8nveing",
-        form.current,
-        "KxxmkuRIQNqaq_FAO"
-      )
+      .sendForm(serviceId, templateId, form.current, publicKey)
       .then(() => {
         setLoading(false);
         setMessage("✅ Message sent successfully!");
@@ -39,9 +38,7 @@ function Contact() {
       })
       .catch((error) => {
         console.error(error);
-
         setLoading(false);
-
         setMessage("❌ Failed to send message.");
 
         setTimeout(() => {
@@ -60,7 +57,7 @@ function Contact() {
         </h2>
 
         <p className="section-subtitle">
-          Have a project, internship opportunity, or any questions?
+          Have a software engineering opportunity, project, or any questions?
           Feel free to contact me.
         </p>
 

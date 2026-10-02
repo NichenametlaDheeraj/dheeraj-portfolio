@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
 import "./App.css";
@@ -13,7 +14,7 @@ import { initGA } from "./analytics";
 import Clarity from "@microsoft/clarity";
 
 AOS.init({
-  duration: 1000,
+  duration: 800,
   once: true,
 });
 
@@ -25,7 +26,9 @@ Clarity.init("xn78o9nnn4");
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

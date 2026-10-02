@@ -1,0 +1,138 @@
+.code-showcase-section {
+  padding: 64px 0;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.code-editor-card {
+  padding: 0;
+  overflow: hidden;
+  background-color: #0F172A;
+  border: 1px solid #1E293B;
+  box-shadow: var(--shadow-lg);
+
+}
+
+.editor-top-bar {
+  background-color: #1E293B;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #334155;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.editor-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.editor-dots .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.editor-dots .red { background-color: #EF4444; }
+.editor-dots .yellow { background-color: #F59E0B; }
+.editor-dots .green { background-color: #10B981; }
+
+.editor-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+}
+
+.editor-tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: #94A3B8;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.editor-tab-btn:hover {
+  color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.editor-tab-btn.active {
+  background-color: #0F172A;
+  color: #60A5FA;
+  border-color: #334155;
+  font-weight: 600;
+}
+
+.copy-code-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #E2E8F0;
+  border: 1px solid #334155;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.copy-code-btn:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #FFFFFF;
+}
+
+.copied-icon {
+  color: #4ADE80;
+}
+
+.editor-code-body {
+  padding: 24px;
+  color: #E2E8F0;
+}
+
+.code-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1E293B;
+}
+
+.code-lang-tag {
+  background-color: #2563EB;
+  color: #FFFFFF;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.code-title-text {
+  font-size: 0.9rem;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+.code-pre {
+  margin: 0;
+  font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #CBD5E1;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}

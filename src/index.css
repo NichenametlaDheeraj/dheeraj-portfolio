@@ -1,359 +1,364 @@
-/* ===========================
-   GOOGLE FONTS
-=========================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+/* ============================================================
+   PROFESSIONAL COLOR & TYPOGRAPHY SYSTEM
+   Python Full Stack Developer Portfolio - Dheeraj Nichenametla
+   ============================================================ */
 
-/* ===========================
-   ROOT VARIABLES
-=========================== */
-:root{
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
-    --bg:#050816;
-    --bg2:#0f172a;
+:root {
+  /* Color Palette */
+  --primary: #0F172A;         /* Deep Navy */
+  --secondary: #1E293B;       /* Slate Navy */
+  --accent: #2563EB;          /* Professional Blue */
+  --accent-hover: #1D4ED8;    /* Accent Hover */
+  --bg-main: #F8FAFC;         /* Off White */
+  --bg-card: #FFFFFF;         /* White */
+  --text-primary: #0F172A;    /* Primary Text */
+  --text-secondary: #475569;  /* Secondary Text */
+  --text-muted: #64748B;      /* Muted Text */
+  --border: #E2E8F0;          /* Border Color */
+  --border-subtle: #F1F5F9;
+  --success: #16A34A;         /* Success */
+  --error: #DC2626;           /* Error */
+  --footer-bg: #0F172A;       /* Footer Background */
 
-    --primary:#4F46E5;
-    --secondary:#06B6D4;
-    --accent:#8B5CF6;
+  /* Designer Shadows & Elevations */
+  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -4px rgba(15, 23, 42, 0.04);
+  --shadow-card-hover: 0 16px 32px -8px rgba(37, 99, 235, 0.12), 0 4px 12px -4px rgba(15, 23, 42, 0.05);
 
-    --white:#ffffff;
-    --text:#e5e7eb;
-    --gray:#94a3b8;
-
-    --glass:rgba(255,255,255,.08);
-
-    --border:rgba(255,255,255,.15);
-
-    --shadow:0 20px 50px rgba(0,0,0,.35);
-
+  /* Font */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
-/* ===========================
-   RESET
-=========================== */
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* ============================================================
+   RESET & BASE STYLES
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+  font-size: 16px;
+  scroll-behavior: auto;
 }
 
-body{
-
-    font-family:'Poppins',sans-serif;
-
-    background:var(--bg);
-
-    color:var(--white);
-
-    overflow-x:hidden;
-
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-a{
-    text-decoration:none;
-    color:inherit;
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-ul{
-    list-style:none;
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-img{
-    max-width:100%;
-    display:block;
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
 }
 
-/* ===========================
-   SCROLL BAR
-=========================== */
-
-::-webkit-scrollbar{
-    width:10px;
+ul, ol {
+  list-style: none;
 }
 
-::-webkit-scrollbar-track{
-    background:#0b1120;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-::-webkit-scrollbar-thumb{
-
-    background:linear-gradient(
-    var(--primary),
-    var(--accent));
-
-    border-radius:20px;
+button, input, textarea, select {
+  font-family: inherit;
 }
 
-/* ===========================
-   CONTAINER
-=========================== */
-
-.container{
-
-    width:min(1200px,90%);
-    margin:auto;
-
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* ===========================
-   SECTION
-=========================== */
-
-section{
-
-    padding:100px 0;
-    position:relative;
-
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
 }
 
-.section-title{
-
-    font-size:40px;
-    text-align:center;
-    margin-bottom:60px;
-
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 4px;
 }
 
-/* ===========================
-   BUTTON
-=========================== */
-
-.btn{
-
-    display:inline-block;
-
-    padding:14px 32px;
-
-    border-radius:50px;
-
-    background:linear-gradient(
-        135deg,
-        var(--primary),
-        var(--accent)
-    );
-
-    color:white;
-
-    transition:.35s;
-
-    font-weight:600;
-
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
 }
 
-.btn:hover{
-
-    transform:translateY(-5px);
-
-    box-shadow:
-    0 10px 30px rgba(79,70,229,.45);
-
+/* ============================================================
+   LAYOUT & CONTAINERS (FULL PAGE LAYOUT OCCUPYING SIDES)
+   ============================================================ */
+.container {
+  width: min(1400px, 94%);
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ===========================
-   GLASS CARD
-=========================== */
-
-.glass{
-
-    background:var(--glass);
-
-    backdrop-filter:blur(18px);
-
-    border:1px solid var(--border);
-
-    border-radius:20px;
-
-    box-shadow:var(--shadow);
-
+.page-container {
+  padding-top: 104px;
+  padding-bottom: 88px;
+  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  flex: 1;
 }
 
-/* ===========================
-   BACKGROUND
-=========================== */
-
-.background{
-
-    position:fixed;
-
-    inset:0;
-
-    z-index:-1;
-
-    overflow:hidden;
-
+/* ============================================================
+   BUTTON 3D PRESS & DEPTH SYSTEM
+   ============================================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--accent);
+  color: #FFFFFF;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+  position: relative;
+  overflow: hidden;
+  will-change: transform, box-shadow;
 }
 
-/* Floating circles */
-
-.background span{
-
-    position:absolute;
-
-    width:300px;
-
-    height:300px;
-
-    border-radius:50%;
-
-    filter:blur(80px);
-
-    animation:float 18s infinite ease-in-out;
-
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.28);
 }
 
-.background span:nth-child(1){
-
-    background:#4F46E5;
-
-    top:-80px;
-    left:-80px;
-
+.btn-primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.15);
 }
 
-.background span:nth-child(2){
-
-    background:#8B5CF6;
-
-    right:-100px;
-    top:120px;
-
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--bg-card);
+  color: var(--accent);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--accent);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  will-change: transform, box-shadow;
 }
 
-.background span:nth-child(3){
-
-    background:#06B6D4;
-
-    bottom:-100px;
-    left:10%;
-
+.btn-secondary:hover {
+  background-color: #EFF6FF;
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
-.background span:nth-child(4){
-
-    background:#9333EA;
-
-    right:15%;
-    bottom:-120px;
-
+.btn-secondary:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
 }
 
-.background span:nth-child(5){
-
-    background:#2563EB;
-
-    left:45%;
-    top:40%;
-
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: var(--shadow-sm);
+  will-change: transform, box-shadow;
 }
 
-/* ===========================
-   CURSOR GLOW
-=========================== */
-
-.cursor-glow{
-
-    width:25px;
-
-    height:25px;
-
-    position:fixed;
-
-    background:#06B6D4;
-
-    border-radius:50%;
-
-    filter:blur(18px);
-
-    pointer-events:none;
-
-    z-index:999;
-
+.btn-outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background-color: #FFFFFF;
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
 }
 
-/* ===========================
-   PROGRESS BAR
-=========================== */
-
-#progressBar{
-
-    position:fixed;
-
-    top:0;
-
-    left:0;
-
-    height:5px;
-
-    background:linear-gradient(
-        to right,
-        var(--primary),
-        var(--accent)
-    );
-
-    width:0;
-
-    z-index:9999;
-
+.btn-outline:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-sm);
 }
 
-/* ===========================
-   ANIMATION
-=========================== */
-
-@keyframes float{
-
-0%{
-
-transform:translateY(0px);
-
+/* ============================================================
+   SUBTLE 3D CARD HOVER SYSTEM
+   ============================================================ */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform, box-shadow;
 }
 
-50%{
-
-transform:translateY(-80px);
-
+/* 3D card tilt on desktop pointer hover */
+@media (hover: hover) and (pointer: fine) {
+  .card:hover {
+    transform: translateY(-3px) rotateX(1.2deg) rotateY(-1.2deg);
+    box-shadow: var(--shadow-card-hover);
+    border-color: #CBD5E1;
+  }
 }
 
-100%{
-
-transform:translateY(0);
-
+/* ============================================================
+   PROJECT IMAGE DEPTH HOVER
+   ============================================================ */
+.project-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .project-card:hover .project-card-image img {
+    transform: scale(1.02);
+  }
 }
 
-/* ===========================
-   PLACEHOLDER STYLE
-=========================== */
-
-h1{
-
-    text-align:center;
-
-    padding:100px 0;
-
-    font-size:50px;
-
+/* ============================================================
+   DESIGNER BADGES & CHIPS
+   ============================================================ */
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #F1F5F9;
+  color: var(--secondary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid #E2E8F0;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* ===========================
-   HIDE VERCEL TOOLBAR
-=========================== */
+.tech-tag:hover {
+  background-color: #E2E8F0;
+  color: var(--primary);
+}
 
+.section-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Pulse animation dot */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #22C55E;
+  border-radius: 50%;
+  display: inline-block;
+  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  animation: pulseGreen 2s infinite;
+}
+
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* ============================================================
+   ACCESSIBILITY - REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .card:hover {
+    transform: none !important;
+  }
+
+  .project-card:hover .project-card-image img {
+    transform: none !important;
+  }
+
+  .btn-primary:hover, .btn-primary:active,
+  .btn-secondary:hover, .btn-secondary:active,
+  .btn-outline:hover, .btn-outline:active {
+    transform: none !important;
+  }
+}
+
+/* ============================================================
+   HIDE VERCEL TOOLBAR & OVERLAYS
+   ============================================================ */
 #vercel-toolbar,
 vercel-live-feedback,
 [data-vercel-toolbar],
 iframe[src*="vercel.com"],
 iframe#vercel-toolbar-iframe,
 div[class*="vercel-toolbar"] {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    height: 0 !important;
-    width: 0 !important;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
 }

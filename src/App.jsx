@@ -1,61 +1,82 @@
 import { useEffect, useState } from "react";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
+import { AnimatePresence } from "framer-motion";
 import { logPageView } from "./analytics";
 
+import ScrollToTop from "./components/ScrollToTop";
 import Loader from "./components/Loader/Loader";
 import Background from "./components/Background/Background";
-
 import Navbar from "./components/Navbar/Navbar";
-import Hero from "./components/Hero/Hero";
-import About from "./components/About/About";
-import Skills from "./components/Skills/Skills";
-import Projects from "./components/Projects/Projects";
-import Education from "./components/Education/Education";
-import Achievements from "./components/Achievements/Achievements";
-import Contact from "./components/Contact/Contact";
 import Footer from "./components/Footer/Footer";
 import PwaInstallBanner from "./components/PwaInstallBanner/PwaInstallBanner";
+import PageTransition from "./components/PageTransition/PageTransition";
+import ProgressBar from "./components/ProgressBar/ProgressBar";
 import { sendVisitNotification } from "./lib/notifications";
+
+import Home from "./pages/Home/Home";
+import Skills from "./pages/Skills/Skills";
+import Projects from "./pages/Projects/Projects";
+import ProjectDetails from "./pages/ProjectDetails/ProjectDetails";
+import Education from "./pages/Education/Education";
+import Achievements from "./pages/Achievements/Achievements";
+import Contact from "./pages/Contact/Contact";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
-  // Loading Screen
+  // Initial Loader screen
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 1200);
 
     return () => clearTimeout(timer);
   }, []);
 
-  // Google Analytics & Visit Notifications
+  // Track page views and visit notifications on location change
   useEffect(() => {
     logPageView();
     sendVisitNotification();
-  }, []);
+  }, [location.pathname]);
 
   return (
     <>
-      {/* Animated Background */}
+      <ProgressBar />
+      <ScrollToTop />
+
+      {/* Ambient background */}
       <Background />
 
-      {/* Loading Screen */}
+      {/* Initial loading screen */}
       {loading && <Loader />}
 
-      {/* Portfolio Sections */}
+      {/* Sticky Navbar */}
       <Navbar />
+
+      {/* Main Content Router with Smooth Page Transitions */}
       <main id="main-content">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Education />
-        <Achievements />
-        <Contact />
+        <AnimatePresence mode="wait">
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+            <Route path="/about" element={<Navigate to="/" replace />} />
+            <Route path="/experience" element={<Navigate to="/" replace />} />
+            <Route path="/skills" element={<PageTransition><Skills /></PageTransition>} />
+            <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />
+            <Route path="/projects/:projectId" element={<PageTransition><ProjectDetails /></PageTransition>} />
+            <Route path="/education" element={<PageTransition><Education /></PageTransition>} />
+            <Route path="/achievements" element={<PageTransition><Achievements /></PageTransition>} />
+            <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+          </Routes>
+        </AnimatePresence>
       </main>
+
+      {/* Shared Footer across all routes */}
       <Footer />
 
-      {/* In-Website PWA Install Notification Bar */}
+      {/* PWA Install Notification Banner */}
       <PwaInstallBanner />
     </>
   );
