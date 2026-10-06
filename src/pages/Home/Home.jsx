@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaArrowRight,
   FaGraduationCap, FaLaptopCode, FaPython, FaBrain
@@ -18,7 +19,12 @@ export default function Home() {
   return (
     <div className="page-container home-page">
       {/* HERO SECTION */}
-      <section className="hero-section">
+      <motion.section 
+        className="hero-section"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         <div className="container hero-grid">
           {/* Left Column */}
           <div className="hero-content">
@@ -89,7 +95,12 @@ export default function Home() {
           </div>
 
           {/* Right Column - Profile Image */}
-          <div className="hero-image-wrapper">
+          <motion.div 
+            className="hero-image-wrapper"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
             <div className="profile-image-container">
               <div className="profile-backdrop-card"></div>
               <div className="profile-image-card">
@@ -100,12 +111,17 @@ export default function Home() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
       {/* BIOGRAPHY & ABOUT SECTION */}
-      <section className="about-section">
+      <motion.section 
+        className="about-section"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
         <div className="container">
           <div className="section-header-designer">
             <span className="section-number">01 / BIOGRAPHY</span>
@@ -179,10 +195,15 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* SELECTED PROJECTS SECTION */}
-      <section className="featured-section">
+      <motion.section 
+        className="featured-section"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
         <div className="container">
           <div className="section-header-designer">
             <span className="section-number">02 / FEATURED WORK</span>
@@ -192,7 +213,13 @@ export default function Home() {
 
           <div className="projects-grid">
             {featuredProjects.map((project, idx) => (
-              <div className="project-card card" key={project.id}>
+              <motion.div 
+                className="project-card card" 
+                key={project.id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 * idx }}
+              >
                 <div className="card-top-accent"></div>
                 {project.image && (
                   <div className="project-card-image">
@@ -215,7 +242,7 @@ export default function Home() {
                     </Link>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
 
@@ -225,10 +252,15 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* PROFESSIONAL CTA SECTION */}
-      <section className="cta-section">
+      <motion.section 
+        className="cta-section"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+      >
         <div className="container">
           <div className="cta-card">
             <span className="cta-badge">LET'S CONNECT</span>
@@ -241,7 +273,7 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+      </motion.section>
     </div>
   );
 }

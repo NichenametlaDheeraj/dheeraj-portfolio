@@ -4,27 +4,27 @@
   gap: 8px;
   margin-bottom: 24px;
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: #A8A29E;
   font-weight: 500;
 }
 
 .breadcrumbs a {
-  color: var(--accent);
+  color: #FDBA74;
   transition: color 0.2s ease;
 }
 
 .breadcrumbs a:hover {
-  color: var(--accent-hover);
+  color: #FFFFFF;
   text-decoration: underline;
 }
 
 .breadcrumb-separator {
   font-size: 0.65rem;
-  color: var(--text-muted);
+  color: #A8A29E;
 }
 
 .breadcrumb-current {
-  color: var(--primary);
+  color: #FFFFFF;
   font-weight: 600;
   max-width: 250px;
   white-space: nowrap;
@@ -39,14 +39,14 @@
 .detail-title {
   font-size: 2.25rem;
   font-weight: 800;
-  color: var(--primary);
+  color: #FFFFFF;
   margin-bottom: 6px;
   letter-spacing: -0.02em;
 }
 
 .detail-subtitle {
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: #D6D3D1;
   margin-bottom: 16px;
 }
 
@@ -61,6 +61,11 @@
   overflow: hidden;
   margin-bottom: 36px;
   max-height: 480px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
 }
 
 .detail-image-card img {
@@ -85,15 +90,15 @@
 .detail-block h2 {
   font-size: 1.3rem;
   font-weight: 700;
-  color: var(--primary);
+  color: #FFFFFF;
   margin-bottom: 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(231, 213, 183, 0.08);
 }
 
 .detail-block p {
   font-size: 1rem;
-  color: var(--text-secondary);
+  color: #D6D3D1;
   line-height: 1.65;
 }
 
@@ -108,12 +113,12 @@
   align-items: flex-start;
   gap: 12px;
   font-size: 0.975rem;
-  color: var(--text-primary);
+  color: #D6D3D1;
   line-height: 1.5;
 }
 
 .check-icon {
-  color: var(--accent);
+  color: #FDBA74;
   font-size: 1.1rem;
   margin-top: 3px;
   flex-shrink: 0;
@@ -122,7 +127,7 @@
 .sidebar-card h3 {
   font-size: 1rem;
   font-weight: 700;
-  color: var(--primary);
+  color: #FFFFFF;
   margin-bottom: 14px;
 }
 
@@ -134,7 +139,7 @@
 
 .sidebar-divider {
   height: 1px;
-  background-color: var(--border);
+  background-color: rgba(231, 213, 183, 0.08);
   margin: 20px 0;
 }
 
@@ -151,7 +156,7 @@
 
 .no-links-text {
   font-size: 0.875rem;
-  color: var(--text-muted);
+  color: #A8A29E;
   font-style: italic;
 }
 

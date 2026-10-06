@@ -2,24 +2,18 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
   margin-top: 30px;
-
   padding: 10px 20px;
-
   border-radius: 50px;
-
-  color: #fff;
-
+  color: #FFFFFF;
   font-size: 16px;
-
   font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .visitor-counter span {
-  color: #06b6d4;
-
+  color: #FDBA74;
   font-size: 18px;
-
   font-weight: 700;
 }

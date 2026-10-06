@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { skillsData } from "../../data/skills";
 import {
@@ -71,7 +72,12 @@ export default function Skills() {
         />
 
         {/* Level Filter Bar */}
-        <div className="skills-filter-container">
+        <motion.div 
+          className="skills-filter-container"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
           <span className="skills-filter-label"><FaFilter /> Filter by Level:</span>
           <div className="skills-filter-pills">
             {levels.map((lvl) => (
@@ -84,9 +90,14 @@ export default function Skills() {
               </button>
             ))}
           </div>
-        </div>
+        </motion.div>
 
-        <div className="skills-categories">
+        <motion.div 
+          className="skills-categories"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {skillsData.map((categoryGroup, index) => {
             const filteredGroupSkills = categoryGroup.skills.filter(
               (s) => levelFilter === "All" || s.status.toLowerCase() === levelFilter.toLowerCase()
@@ -95,7 +106,13 @@ export default function Skills() {
             if (filteredGroupSkills.length === 0) return null;
 
             return (
-              <div className="skill-category-block" key={index}>
+              <motion.div 
+                className="skill-category-block" 
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.1 * index }}
+              >
                 <h2 className="category-title">{categoryGroup.category}</h2>
                 <div className="skills-grid">
                   {filteredGroupSkills.map((skill, sIdx) => (
@@ -112,10 +129,10 @@ export default function Skills() {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </div>
   );

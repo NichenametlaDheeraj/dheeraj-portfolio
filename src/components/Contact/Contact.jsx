@@ -212,7 +212,7 @@ function Contact() {
               <button type="submit" disabled={loading} style={{ flex: 1 }}>
                 {loading ? "Sending..." : "Send Message"}
               </button>
-              <button type="button" onClick={handleDirectEmailClick} style={{ backgroundColor: '#1E293B', color: '#fff', padding: '12px 16px', borderRadius: '8px', cursor: 'pointer' }}>
+              <button type="button" onClick={handleDirectEmailClick} style={{ backgroundColor: 'rgba(255, 255, 255, 0.04)', color: '#E7E5E4', border: '1px solid rgba(255, 255, 255, 0.1)', padding: '12px 16px', borderRadius: '8px', cursor: 'pointer' }}>
                 Email App
               </button>
             </div>

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaLinkedin, FaGithub, FaPaperPlane } from "react-icons/fa";
 import "./Contact.css";
@@ -126,7 +127,12 @@ export default function Contact() {
 
         <div className="contact-grid">
           {/* Left Column: Contact Information */}
-          <div className="contact-info-col">
+          <motion.div 
+            className="contact-info-col"
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
             <div className="info-item card">
               <div className="info-icon-badge">
                 <FaEnvelope />
@@ -185,10 +191,15 @@ export default function Contact() {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact Form */}
-          <div className="contact-form-col card">
+          <motion.div 
+            className="contact-form-col card"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+          >
             <h2>Send a Message</h2>
             <form ref={form} onSubmit={sendEmail} className="contact-form">
               <div className="form-group">
@@ -270,7 +281,7 @@ export default function Contact() {
                 Or email directly to: <a href="mailto:dheerajnichenametla@gmail.com">dheerajnichenametla@gmail.com</a>
               </p>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

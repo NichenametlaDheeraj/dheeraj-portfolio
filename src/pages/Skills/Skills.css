@@ -13,7 +13,7 @@
   gap: 6px;
   font-size: 0.875rem;
   font-weight: 600;
-  color: var(--secondary);
+  color: #E7E5E4; /* stone-200 */
 }
 
 .skills-filter-pills {
@@ -22,9 +22,9 @@
 }
 
 .skill-level-btn {
-  background-color: #FFFFFF;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #D6D3D1; /* stone-300 */
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -34,14 +34,14 @@
 }
 
 .skill-level-btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
+  border-color: #FDBA74;
+  color: #FDBA74;
 }
 
 .skill-level-btn.active {
-  background-color: var(--primary);
-  border-color: var(--primary);
-  color: #FFFFFF;
+  background-color: #EDE8E0;
+  border-color: #EDE8E0;
+  color: #0C0A09;
   font-weight: 600;
 }
 
@@ -54,11 +54,11 @@
 .category-title {
   font-size: 1.15rem;
   font-weight: 700;
-  color: var(--secondary);
+  color: #FFFFFF;
   letter-spacing: 0.05em;
   margin-bottom: 20px;
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 2px solid rgba(231, 213, 183, 0.08);
   display: inline-block;
 }
 
@@ -73,15 +73,26 @@
   align-items: center;
   gap: 16px;
   padding: 16px 20px;
-  background-color: #FFFFFF;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.skill-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 213, 183, 0.2);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 .skill-icon {
   width: 42px;
   height: 42px;
-  background-color: #F8FAFC;
-  border: 1px solid var(--border);
-  color: var(--accent);
+  background-color: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.15);
+  color: #FDBA74; /* amber-300 icon */
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -99,7 +110,7 @@
 .skill-name {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--primary);
+  color: #FFFFFF;
   line-height: 1.2;
 }
 
@@ -113,16 +124,16 @@
 }
 
 .badge-advanced {
-  background-color: #DCFCE7;
-  color: #15803D;
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #4ADE80;
 }
 
 .badge-intermediate {
-  background-color: #EFF6FF;
-  color: #1D4ED8;
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #FDBA74;
 }
 
 .badge-learning {
-  background-color: #FEF3C7;
-  color: #B45309;
+  background-color: rgba(231, 213, 183, 0.15);
+  color: #EDE8E0;
 }

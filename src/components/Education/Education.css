@@ -1,87 +1,69 @@
-.education{
-    padding:100px 0;
+.education {
+    padding: 100px 0;
 }
 
-.timeline{
-    position:relative;
-    max-width:900px;
-    margin:auto;
+.education-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
 }
 
-.timeline::before{
-    content:"";
-    position:absolute;
-    left:30px;
-    top:0;
-    width:4px;
-    height:100%;
-    background:#4F46E5;
+.education-card {
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: .4s;
 }
 
-.timeline-item{
-    display:flex;
-    align-items:flex-start;
-    gap:30px;
-    margin-bottom:50px;
+.education-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(231, 213, 183, 0.2);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
-.timeline-icon{
-    width:60px;
-    height:60px;
-    min-width:60px;
-    border-radius:50%;
-    background:linear-gradient(
-        135deg,
-        #06B6D4,
-        #8B5CF6
-    );
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    font-size:25px;
-    z-index:2;
+.edu-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(245, 158, 11, 0.12);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    color: #FDBA74; /* amber-300 icon */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    margin-bottom: 15px;
 }
 
-.timeline-content{
-    padding:30px;
-    flex:1;
+.education-card h3 {
+    color: #FFFFFF;
+    font-size: 22px;
+    margin-bottom: 8px;
 }
 
-.timeline-content span{
-    color:#06B6D4;
-    font-weight:600;
+.education-card h4 {
+    color: #FDBA74;
+    font-size: 16px;
+    margin-bottom: 12px;
 }
 
-.timeline-content h3{
-    margin:10px 0;
+.education-card p {
+    color: #D6D3D1; /* stone-300 */
+    line-height: 1.7;
 }
 
-.timeline-content h4{
-    color:#94A3B8;
-    margin-bottom:15px;
-}
-
-.timeline-content p{
-    color:#CBD5E1;
-    line-height:1.8;
-}
-
-@media(max-width:768px){
-
-.timeline::before{
-    left:25px;
-}
-
-.timeline-item{
-    gap:20px;
-}
-
-.timeline-icon{
-    width:50px;
-    height:50px;
-    min-width:50px;
-    font-size:20px;
-}
-
+.edu-date {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #A8A29E; /* stone-400 */
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 15px;
 }

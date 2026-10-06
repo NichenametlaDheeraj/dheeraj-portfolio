@@ -11,17 +11,22 @@
 
 .about-text {
     padding: 40px;
-    border-radius: 20px;
+    border-radius: 16px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .about-text h3 {
     font-size: 32px;
     margin-bottom: 20px;
+    color: #FFFFFF;
 }
 
 .about-text p {
     margin-bottom: 20px;
-    color: #cbd5e1;
+    color: #D6D3D1; /* stone-300 */
     line-height: 1.8;
 }
 
@@ -35,24 +40,32 @@
     padding: 30px;
     text-align: center;
     transition: .4s;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
 }
 
 .card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
+    border-color: rgba(231, 213, 183, 0.2);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 .icon {
     font-size: 40px;
-    color: #06B6D4;
+    color: #FDBA74; /* amber-300 icon */
     margin-bottom: 15px;
 }
 
 .card h3 {
     margin-bottom: 10px;
+    color: #FFFFFF;
 }
 
 .card p {
-    color: #cbd5e1;
+    color: #D6D3D1;
 }
 
 @media(max-width:900px){

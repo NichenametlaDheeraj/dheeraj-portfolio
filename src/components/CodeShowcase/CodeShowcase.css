@@ -1,24 +1,24 @@
 .code-showcase-section {
   padding: 64px 0;
-  border-top: 1px solid var(--border-subtle);
+  border-top: 1px solid rgba(231, 213, 183, 0.08);
 }
 
 .code-editor-card {
   padding: 0;
   overflow: hidden;
-  background-color: #0F172A;
-  border: 1px solid #1E293B;
-  box-shadow: var(--shadow-lg);
-
+  background-color: rgba(28, 25, 23, 0.9);
+  border: 1px solid rgba(231, 213, 183, 0.12);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 .editor-top-bar {
-  background-color: #1E293B;
+  background-color: #1C1917;
   padding: 12px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #334155;
+  border-bottom: 1px solid rgba(231, 213, 183, 0.08);
   flex-wrap: wrap;
   gap: 12px;
 }
@@ -50,7 +50,7 @@
   gap: 8px;
   background: transparent;
   border: 1px solid transparent;
-  color: #94A3B8;
+  color: #A8A29E;
   padding: 6px 14px;
   border-radius: 6px;
   font-size: 0.85rem;
@@ -65,9 +65,9 @@
 }
 
 .editor-tab-btn.active {
-  background-color: #0F172A;
-  color: #60A5FA;
-  border-color: #334155;
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #FDBA74;
+  border-color: rgba(245, 158, 11, 0.2);
   font-weight: 600;
 }
 
@@ -75,9 +75,9 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background-color: rgba(255, 255, 255, 0.08);
-  color: #E2E8F0;
-  border: 1px solid #334155;
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #E7E5E4;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.8rem;
@@ -87,9 +87,9 @@
 }
 
 .copy-code-btn:hover {
-  background-color: var(--accent);
-  border-color: var(--accent);
-  color: #FFFFFF;
+  background-color: #EDE8E0;
+  border-color: #EDE8E0;
+  color: #0C0A09;
 }
 
 .copied-icon {
@@ -98,7 +98,7 @@
 
 .editor-code-body {
   padding: 24px;
-  color: #E2E8F0;
+  color: #D6D3D1;
 }
 
 .code-meta {
@@ -107,12 +107,12 @@
   gap: 12px;
   margin-bottom: 16px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #1E293B;
+  border-bottom: 1px solid rgba(231, 213, 183, 0.08);
 }
 
 .code-lang-tag {
-  background-color: #2563EB;
-  color: #FFFFFF;
+  background-color: rgba(245, 158, 11, 0.15);
+  color: #FDBA74;
   font-size: 0.75rem;
   font-weight: 700;
   padding: 2px 8px;
@@ -122,7 +122,7 @@
 
 .code-title-text {
   font-size: 0.9rem;
-  color: #94A3B8;
+  color: #A8A29E;
   font-weight: 500;
 }
 
@@ -131,7 +131,7 @@
   font-family: 'Fira Code', 'Cascadia Code', Consolas, Monaco, monospace;
   font-size: 0.9rem;
   line-height: 1.6;
-  color: #CBD5E1;
+  color: #D6D3D1;
   overflow-x: auto;
   white-space: pre-wrap;
   word-break: break-word;

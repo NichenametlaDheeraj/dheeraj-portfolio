@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 import { projectsData } from "../../data/projects";
 import { FaArrowLeft, FaGithub, FaExternalLinkAlt, FaCheckCircle, FaChevronRight } from "react-icons/fa";
 import "./ProjectDetails.css";
@@ -38,16 +39,26 @@ export default function ProjectDetails() {
     <div className="page-container project-details-page">
       <div className="container">
         {/* Breadcrumbs Navigation */}
-        <div className="breadcrumbs">
+        <motion.div 
+          className="breadcrumbs"
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.3 }}
+        >
           <Link to="/">Home</Link>
           <FaChevronRight className="breadcrumb-separator" />
           <Link to="/projects">Projects</Link>
           <FaChevronRight className="breadcrumb-separator" />
           <span className="breadcrumb-current">{project.title}</span>
-        </div>
+        </motion.div>
 
         {/* Detail Header */}
-        <div className="detail-header">
+        <motion.div 
+          className="detail-header"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
           <h1 className="detail-title">{project.title}</h1>
           <p className="detail-subtitle">{project.subtitle}</p>
 
@@ -56,17 +67,27 @@ export default function ProjectDetails() {
               <span className="tech-tag" key={idx}>{t}</span>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Project Image */}
         {project.image && (
-          <div className="detail-image-card card">
+          <motion.div 
+            className="detail-image-card card"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.2 }}
+          >
             <img src={project.image} alt={project.title} />
-          </div>
+          </motion.div>
         )}
 
         {/* Content Layout */}
-        <div className="detail-content-grid">
+        <motion.div 
+          className="detail-content-grid"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+        >
           {/* Main Info */}
           <div className="detail-main card">
             <section className="detail-block">
@@ -145,7 +166,7 @@ export default function ProjectDetails() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

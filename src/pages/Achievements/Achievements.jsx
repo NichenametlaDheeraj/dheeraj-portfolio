@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { metricsData, certificationsData } from "../../data/achievements";
 import { FaAward, FaCalendarAlt, FaBuilding, FaCheckCircle } from "react-icons/fa";
@@ -19,22 +20,47 @@ export default function Achievements() {
         />
 
         {/* Statistics Row */}
-        <div className="metrics-grid">
+        <motion.div 
+          className="metrics-grid"
+          initial="initial"
+          animate="animate"
+          variants={{
+            animate: { transition: { staggerChildren: 0.1 } }
+          }}
+        >
           {metricsData.map((item, idx) => (
-            <div className="metric-card card" key={idx}>
+            <motion.div 
+              className="metric-card card" 
+              key={idx}
+              variants={{
+                initial: { opacity: 0, scale: 0.9 },
+                animate: { opacity: 1, scale: 1, transition: { duration: 0.4 } }
+              }}
+            >
               <span className="metric-number">{item.number}</span>
               <span className="metric-label">{item.label}</span>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Certifications Section */}
-        <div className="certifications-section">
+        <motion.div 
+          className="certifications-section"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           <h2 className="section-title text-left">Certifications</h2>
 
           <div className="certifications-grid">
             {certificationsData.map((cert, idx) => (
-              <div className="cert-card card" key={idx}>
+              <motion.div 
+                className="cert-card card" 
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.15 * idx }}
+              >
                 <div className="cert-header">
                   <div className="cert-icon">
                     <FaAward />
@@ -51,10 +77,10 @@ export default function Achievements() {
                 <div className="cert-status">
                   <FaCheckCircle className="status-icon" /> Verified Credential
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { projectsData } from "../../data/projects";
 import { FaGithub, FaExternalLinkAlt, FaArrowRight, FaFolderOpen, FaSearch, FaTimes } from "react-icons/fa";
@@ -63,7 +64,12 @@ export default function Projects() {
         />
 
         {/* Live Search & Filter Control Bar */}
-        <div className="projects-control-bar">
+        <motion.div 
+          className="projects-control-bar"
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+        >
           {/* Live Search Box */}
           <div className="search-input-wrapper">
             <FaSearch className="search-icon" />
@@ -101,7 +107,7 @@ export default function Projects() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Results Counter */}
         <div className="results-meta">
@@ -110,9 +116,23 @@ export default function Projects() {
 
         {/* Projects Grid or Empty State */}
         {filteredProjects.length > 0 ? (
-          <div className="projects-grid">
+          <motion.div 
+            className="projects-grid"
+            initial="initial"
+            animate="animate"
+            variants={{
+              animate: { transition: { staggerChildren: 0.08 } }
+            }}
+          >
             {filteredProjects.map((project, idx) => (
-              <div className="project-card card" key={project.id}>
+              <motion.div 
+                className="project-card card" 
+                key={project.id}
+                variants={{
+                  initial: { opacity: 0, x: 20 },
+                  animate: { opacity: 1, x: 0, transition: { duration: 0.4 } }
+                }}
+              >
                 <div className="card-top-accent"></div>
                 {project.image && (
                   <div className="project-card-image">
@@ -163,12 +183,17 @@ export default function Projects() {
                     )}
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         ) : (
           /* Empty State Section */
-          <div className="empty-state card">
+          <motion.div 
+            className="empty-state card"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.4 }}
+          >
             <div className="empty-icon">
               <FaFolderOpen />
             </div>
@@ -177,7 +202,7 @@ export default function Projects() {
             <button className="btn-primary" onClick={handleReset}>
               Reset Filters
             </button>
-          </div>
+          </motion.div>
         )}
       </div>
     </div>

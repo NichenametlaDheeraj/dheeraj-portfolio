@@ -3,7 +3,7 @@
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background-color: var(--bg-main);
+  background-color: transparent;
   pointer-events: none;
 }
 
@@ -12,40 +12,40 @@
   width: 450px;
   height: 450px;
   border-radius: 50%;
-  filter: blur(120px);
+  filter: blur(140px);
   opacity: 0.35;
   animation: subtleFloat 22s infinite ease-in-out;
 }
 
 .background span:nth-child(1) {
-  background: #E2E8F0;
+  background: rgba(245, 158, 11, 0.08); /* warm amber glow */
   top: -150px;
   left: -150px;
 }
 
 .background span:nth-child(2) {
-  background: #DBEAFE;
+  background: rgba(217, 119, 6, 0.06);
   right: -150px;
   top: 100px;
   animation-delay: -5s;
 }
 
 .background span:nth-child(3) {
-  background: #E0F2FE;
+  background: rgba(231, 213, 183, 0.05);
   bottom: -150px;
   left: 10%;
   animation-delay: -10s;
 }
 
 .background span:nth-child(4) {
-  background: #F1F5F9;
+  background: rgba(245, 158, 11, 0.06);
   right: 15%;
   bottom: -150px;
   animation-delay: -15s;
 }
 
 .background span:nth-child(5) {
-  background: #EFF6FF;
+  background: rgba(180, 83, 9, 0.05);
   left: 40%;
   top: 35%;
   animation-delay: -7s;

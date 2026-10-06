@@ -12,12 +12,24 @@
   justify-content: center;
   padding: 24px;
   text-align: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.metric-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 213, 183, 0.2);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 .metric-number {
   font-size: 2.5rem;
   font-weight: 800;
-  color: var(--accent);
+  color: #FDBA74;
   line-height: 1;
   margin-bottom: 8px;
   letter-spacing: -0.02em;
@@ -26,7 +38,7 @@
 .metric-label {
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-secondary);
+  color: #D6D3D1;
 }
 
 .certifications-section {
@@ -45,6 +57,19 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 24px;
+  transition: all 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 213, 183, 0.2);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 .cert-header {
@@ -57,8 +82,8 @@
 .cert-icon {
   width: 44px;
   height: 44px;
-  background-color: #EFF6FF;
-  color: var(--accent);
+  background-color: rgba(245, 158, 11, 0.12);
+  color: #FDBA74;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -70,7 +95,7 @@
 .cert-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: var(--primary);
+  color: #FFFFFF;
   line-height: 1.3;
   margin-bottom: 6px;
 }
@@ -79,7 +104,7 @@
   display: flex;
   gap: 14px;
   font-size: 0.825rem;
-  color: var(--text-muted);
+  color: #A8A29E;
   font-weight: 500;
 }
 
@@ -91,7 +116,7 @@
 
 .cert-desc {
   font-size: 0.925rem;
-  color: var(--text-secondary);
+  color: #D6D3D1;
   line-height: 1.5;
   margin-bottom: 20px;
 }
@@ -102,9 +127,9 @@
   gap: 6px;
   font-size: 0.825rem;
   font-weight: 600;
-  color: var(--success);
+  color: #4ADE80;
   padding-top: 12px;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid rgba(231, 213, 183, 0.08);
 }
 
 .status-icon {

@@ -17,17 +17,19 @@
 ========================== */
 
 .project-card {
-    background: rgba(17, 24, 39, 0.8);
-    border: 1px solid rgba(255,255,255,.08);
-    border-radius: 20px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
     overflow: hidden;
     transition: .35s;
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);}
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+}
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(79,70,229,.35);
+    transform: translateY(-8px);
+    border-color: rgba(231, 213, 183, 0.2);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 /* ==========================
@@ -39,6 +41,7 @@
     height: 220px;
     object-fit: cover;
     display: block;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ==========================
@@ -50,13 +53,13 @@
 }
 
 .project-content h3 {
-    color: white;
+    color: #FFFFFF;
     margin-bottom: 15px;
     font-size: 24px;
 }
 
 .project-content p {
-    color: #cbd5e1;
+    color: #D6D3D1; /* stone-300 */
     line-height: 1.8;
     margin-bottom: 20px;
 }
@@ -73,9 +76,10 @@
 }
 
 .tech-stack span {
-    background: linear-gradient(135deg,#4F46E5,#8B5CF6);
-    color: white;
-    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: #E7E5E4; /* stone-200 */
+    padding: 6px 14px;
     border-radius: 30px;
     font-size: 13px;
     font-weight: 600;
@@ -97,15 +101,16 @@
     padding: 12px 22px;
     border-radius: 10px;
     text-decoration: none;
-    color: white;
-    background: linear-gradient(135deg,#4F46E5,#8B5CF6);
+    color: #000000;
+    background: #EDE8E0; /* Primary Ivory */
     font-weight: 600;
     transition: .3s;
 }
 
 .project-buttons a:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(79,70,229,.4);
+    transform: translateY(-2px);
+    background: #FFFFFF;
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 /* ==========================

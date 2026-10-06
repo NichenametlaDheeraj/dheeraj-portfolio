@@ -1,39 +1,42 @@
 /* ============================================================
-   PROFESSIONAL COLOR & TYPOGRAPHY SYSTEM
+   WARM STONE THEME & TYPOGRAPHY SYSTEM
    Python Full Stack Developer Portfolio - Dheeraj Nichenametla
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  /* Color Palette */
-  --primary: #0F172A;         /* Deep Navy */
-  --secondary: #1E293B;       /* Slate Navy */
-  --accent: #2563EB;          /* Professional Blue */
-  --accent-hover: #1D4ED8;    /* Accent Hover */
-  --bg-main: #F8FAFC;         /* Off White */
-  --bg-card: #FFFFFF;         /* White */
-  --text-primary: #0F172A;    /* Primary Text */
-  --text-secondary: #475569;  /* Secondary Text */
-  --text-muted: #64748B;      /* Muted Text */
-  --border: #E2E8F0;          /* Border Color */
-  --border-subtle: #F1F5F9;
-  --success: #16A34A;         /* Success */
-  --error: #DC2626;           /* Error */
-  --footer-bg: #0F172A;       /* Footer Background */
+  /* Warm Stone Palette */
+  --primary: #FFFFFF;                  /* Headings: text-white */
+  --secondary: #E7E5E4;                /* stone-200 */
+  --accent: #EDE8E0;                   /* Ivory primary button */
+  --accent-hover: #FFFFFF;
+  --amber-icon: #FDBA74;               /* amber-300 icon */
+  --amber-glow: rgba(245, 158, 11, 0.08);
+  --bg-main: #0C0A09;                  /* Global Background */
+  --bg-card: rgba(0, 0, 0, 0.4);       /* bg-black/40 */
+  --bg-card-solid: #1C1917;            /* card: #1C1917 */
+  --text-primary: #FFFFFF;             /* Headings */
+  --text-secondary: #D6D3D1;           /* Body: stone-300 */
+  --text-muted: #A8A29E;               /* Muted: stone-400 */
+  --border: rgba(231, 213, 183, 0.08); /* border: rgba(231,213,183,0.08) */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --success: #16A34A;                  /* Success */
+  --error: #DC2626;                    /* Error */
+  --footer-bg: #0C0A09;                /* Footer Background */
 
   /* Designer Shadows & Elevations */
-  --shadow-sm: 0 1px 3px 0 rgba(15, 23, 42, 0.04), 0 1px 2px -1px rgba(15, 23, 42, 0.03);
-  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.06), 0 2px 4px -2px rgba(15, 23, 42, 0.04);
-  --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.08), 0 4px 8px -4px rgba(15, 23, 42, 0.04);
-  --shadow-card-hover: 0 16px 32px -8px rgba(37, 99, 235, 0.12), 0 4px 12px -4px rgba(15, 23, 42, 0.05);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px -2px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 12px 24px -4px rgba(0, 0, 0, 0.6);
+  --shadow-card-hover: 0 8px 24px rgba(245, 158, 11, 0.12);
 
   /* Font */
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 }
 
 /* ============================================================
-   RESET & BASE STYLES
+   RESET & BASE STYLES WITH GLOBAL BACKGROUND LAYERS
    ============================================================ */
 * {
   margin: 0;
@@ -44,12 +47,20 @@
 html {
   font-size: 16px;
   scroll-behavior: auto;
+  background-color: #0C0A09;
 }
 
 body {
   font-family: var(--font-family);
-  background-color: var(--bg-main);
-  color: var(--text-primary);
+  background-color: #0C0A09;
+  background-image: 
+    linear-gradient(rgba(231, 213, 183, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(231, 213, 183, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(245, 158, 11, 0.12), transparent 60%),
+    radial-gradient(circle at 0% 100%, rgba(217, 119, 6, 0.15), transparent 70%);
+  background-size: 48px 48px, 48px 48px, 100% 100%, 100% 100%;
+  background-attachment: fixed, fixed, fixed, fixed;
+  color: #D6D3D1; /* text-stone-300 */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -97,20 +108,20 @@ button, input, textarea, select {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-main);
+  background: #0C0A09;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+  background: #2A2421;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94A3B8;
+  background: #443E3A;
 }
 
 /* ============================================================
-   LAYOUT & CONTAINERS (FULL PAGE LAYOUT OCCUPYING SIDES)
+   LAYOUT & CONTAINERS
    ============================================================ */
 .container {
   width: min(1400px, 94%);
@@ -129,15 +140,17 @@ button, input, textarea, select {
 }
 
 /* ============================================================
-   BUTTON 3D PRESS & DEPTH SYSTEM
+   BUTTON STYLES (WARM STONE SPEC)
+   Primary: bg-[#EDE8E0] text-black hover:bg-white
+   Secondary: bg-white/[0.04] backdrop-blur-md border border-white/10 text-stone-200 hover:bg-white/[0.08]
    ============================================================ */
-.btn-primary {
+.btn-primary, .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: var(--accent);
-  color: #FFFFFF;
+  background-color: #EDE8E0;
+  color: #000000;
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
@@ -145,107 +158,75 @@ button, input, textarea, select {
   border: 1px solid transparent;
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
-  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
   will-change: transform, box-shadow;
 }
 
-.btn-primary:hover {
-  background-color: var(--accent-hover);
-  color: #FFFFFF;
+.btn-primary:hover, .btn:hover {
+  background-color: #FFFFFF;
+  color: #000000;
   transform: translateY(-1px);
-  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.28);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
-.btn-primary:active {
+.btn-primary:active, .btn:active {
   transform: translateY(1px);
-  box-shadow: 0 2px 4px rgba(37, 99, 235, 0.15);
 }
 
-.btn-secondary {
+.btn-secondary, .btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  background-color: var(--bg-card);
-  color: var(--accent);
+  background-color: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #E7E5E4; /* stone-200 */
   padding: 12px 24px;
   border-radius: 8px;
   font-weight: 600;
   font-size: 0.95rem;
-  border: 1px solid var(--accent);
   cursor: pointer;
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background-color 0.2s ease;
-  box-shadow: var(--shadow-sm);
   will-change: transform, box-shadow;
 }
 
-.btn-secondary:hover {
-  background-color: #EFF6FF;
-  color: var(--accent-hover);
-  border-color: var(--accent-hover);
+.btn-secondary:hover, .btn-outline:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
+  border-color: rgba(231, 213, 183, 0.2);
   transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
 }
 
-.btn-secondary:active {
+.btn-secondary:active, .btn-outline:active {
   transform: translateY(1px);
-  box-shadow: var(--shadow-sm);
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  background-color: var(--bg-card);
-  color: var(--text-primary);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  border: 1px solid var(--border);
-  cursor: pointer;
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, border-color 0.2s ease;
-  box-shadow: var(--shadow-sm);
-  will-change: transform, box-shadow;
-}
-
-.btn-outline:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  background-color: #FFFFFF;
-  transform: translateY(-1px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn-outline:active {
-  transform: translateY(1px);
-  box-shadow: var(--shadow-sm);
 }
 
 /* ============================================================
-   SUBTLE 3D CARD HOVER SYSTEM
+   WARM STONE CARD SYSTEM
+   bg-black/40 backdrop-blur-xl border border-white/[0.08] rounded-2xl
    ============================================================ */
-.card {
-  background-color: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 16px;
+.card, .glass {
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px; /* rounded-2xl */
   padding: 24px;
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
   position: relative;
-  transform-style: preserve-3d;
   will-change: transform, box-shadow;
 }
 
-/* 3D card tilt on desktop pointer hover */
 @media (hover: hover) and (pointer: fine) {
-  .card:hover {
-    transform: translateY(-3px) rotateX(1.2deg) rotateY(-1.2deg);
-    box-shadow: var(--shadow-card-hover);
-    border-color: #CBD5E1;
+  .card:hover, .glass:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
+    border-color: rgba(231, 213, 183, 0.2);
   }
 }
 
@@ -272,19 +253,19 @@ button, input, textarea, select {
 .tech-tag {
   display: inline-flex;
   align-items: center;
-  background-color: #F1F5F9;
-  color: var(--secondary);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: #E7E5E4; /* stone-200 */
   font-size: 0.8rem;
   font-weight: 600;
   padding: 4px 10px;
   border-radius: 6px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .tech-tag:hover {
-  background-color: #E2E8F0;
-  color: var(--primary);
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #FFFFFF;
 }
 
 .section-tag {
@@ -292,7 +273,7 @@ button, input, textarea, select {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: #FDBA74; /* amber-300 */
   margin-bottom: 8px;
   display: block;
 }
@@ -301,22 +282,22 @@ button, input, textarea, select {
 .pulse-dot {
   width: 8px;
   height: 8px;
-  background-color: #22C55E;
+  background-color: #FDBA74;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-  animation: pulseGreen 2s infinite;
+  box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+  animation: pulseAmber 2s infinite;
 }
 
-@keyframes pulseGreen {
+@keyframes pulseAmber {
   0% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
   }
 }
 

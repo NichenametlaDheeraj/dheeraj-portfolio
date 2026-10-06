@@ -11,13 +11,26 @@
   align-items: flex-start;
   gap: 24px;
   padding: 28px;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(231, 213, 183, 0.2);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.12);
 }
 
 .edu-icon {
   width: 48px;
   height: 48px;
-  background-color: #EFF6FF;
-  color: var(--accent);
+  background-color: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #FDBA74;
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -41,7 +54,7 @@
 .edu-degree {
   font-size: 1.25rem;
   font-weight: 700;
-  color: var(--primary);
+  color: #FFFFFF;
   line-height: 1.2;
   margin-bottom: 4px;
 }
@@ -49,7 +62,7 @@
 .edu-institution {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--accent);
+  color: #FDBA74;
   display: flex;
   align-items: center;
   gap: 6px;
@@ -63,9 +76,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  background-color: #F8FAFC;
-  border: 1px solid var(--border);
-  color: var(--text-muted);
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #A8A29E;
   font-size: 0.825rem;
   font-weight: 600;
   padding: 4px 12px;
@@ -75,7 +88,7 @@
 
 .edu-desc {
   font-size: 0.95rem;
-  color: var(--text-secondary);
+  color: #D6D3D1;
   line-height: 1.6;
 }
 

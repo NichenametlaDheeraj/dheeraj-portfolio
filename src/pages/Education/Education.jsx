@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 import PageHeader from "../../components/PageHeader/PageHeader";
 import { educationData } from "../../data/education";
 import { FaGraduationCap, FaCalendarAlt, FaUniversity } from "react-icons/fa";
@@ -18,9 +19,23 @@ export default function Education() {
           subtitle="My academic background, degrees, and professional software engineering training."
         />
 
-        <div className="education-list">
+        <motion.div 
+          className="education-list"
+          initial="initial"
+          animate="animate"
+          variants={{
+            animate: { transition: { staggerChildren: 0.15 } }
+          }}
+        >
           {educationData.map((edu, idx) => (
-            <div className="education-card card" key={idx}>
+            <motion.div 
+              className="education-card card" 
+              key={idx}
+              variants={{
+                initial: { opacity: 0, y: 30 },
+                animate: { opacity: 1, y: 0, transition: { duration: 0.5 } }
+              }}
+            >
               <div className="edu-icon">
                 <FaGraduationCap />
               </div>
@@ -40,9 +55,9 @@ export default function Education() {
 
                 <p className="edu-desc">{edu.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </div>
   );
