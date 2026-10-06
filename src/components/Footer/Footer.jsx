@@ -13,8 +13,8 @@ function Footer() {
           <div className="footer-logo">
             <div className="footer-logo-badge">DN</div>
             <div>
-              <h3>Dheeraj Nichenametla</h3>
-              <p className="footer-role">Python Full Stack Developer</p>
+              <h3>Nichenametla Dheeraj</h3>
+              <p className="footer-role">B.Sc. Computer Science | Python Full Stack Developer</p>
             </div>
           </div>
           <p className="footer-desc">
@@ -70,7 +70,7 @@ function Footer() {
 
       <div className="footer-bottom">
         <div className="container footer-bottom-content">
-          <p>© {currentYear} Dheeraj Nichenametla. All rights reserved.</p>
+          <p>© {currentYear} Nichenametla Dheeraj. All rights reserved.</p>
         </div>
       </div>
     </footer>

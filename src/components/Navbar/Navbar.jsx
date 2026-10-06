@@ -42,7 +42,7 @@ function Navbar() {
         <Link to="/" className="nav-logo" onClick={closeMenu}>
           <div className="logo-badge">DN</div>
           <div className="logo-text">
-            <span className="logo-name">Dheeraj Nichenametla</span>
+            <span className="logo-name">Nichenametla Dheeraj</span>
             <span className="logo-title">Python Full Stack Developer</span>
           </div>
         </Link>

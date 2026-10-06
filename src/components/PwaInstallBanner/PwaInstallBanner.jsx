@@ -148,10 +148,10 @@ function PwaInstallBanner() {
         <div className="pwa-banner-card glass">
           <div className="pwa-banner-left">
             <div className="pwa-icon-box">
-              <img src="/icons/icon-192.png" alt="Dheeraj Portfolio Icon" />
+              <img src="/icons/icon-192.png" alt="Nichenametla Dheeraj Portfolio Icon" />
             </div>
             <div className="pwa-banner-info">
-              <h4 className="pwa-title">Install Dheeraj Portfolio</h4>
+              <h4 className="pwa-title">Install Nichenametla Dheeraj Portfolio</h4>
               <span className="pwa-subtitle">dheeraj-portfolio-xr8g.vercel.app</span>
             </div>
           </div>
@@ -181,7 +181,7 @@ function PwaInstallBanner() {
               </button>
             </div>
             <p className="pwa-guide-desc">
-              To install <strong>Dheeraj Portfolio</strong> on your device:
+              To install <strong>Nichenametla Dheeraj Portfolio</strong> on your device:
             </p>
             <ol className="pwa-guide-steps">
               <li>Open your browser menu (<strong>⋮</strong> or <strong>Share icon</strong>).</li>

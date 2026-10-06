@@ -7,7 +7,7 @@ import "./Education.css";
 
 export default function Education() {
   useEffect(() => {
-    document.title = "Dheeraj Nichenametla | Education";
+    document.title = "Nichenametla Dheeraj | Education";
   }, []);
 
   return (

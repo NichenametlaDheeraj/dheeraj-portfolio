@@ -5,7 +5,7 @@ import "./About.css";
 
 export default function About() {
   useEffect(() => {
-    document.title = "Dheeraj Nichenametla | About";
+    document.title = "Nichenametla Dheeraj | About";
   }, []);
 
   return (
@@ -14,7 +14,7 @@ export default function About() {
         <PageHeader
           badge="01 / BIOGRAPHY"
           title="About Me"
-          subtitle="Python Full Stack Developer passionate about building robust backend solutions and modern web applications."
+          subtitle="B.Sc. Computer Science graduate and Python Full Stack Developer passionate about building robust backend solutions and web applications."
         />
 
         <div className="about-grid">
@@ -22,16 +22,16 @@ export default function About() {
           <div className="about-intro card">
             <h2>Professional Profile</h2>
             <p>
-              I'm <strong>Dheeraj Nichenametla</strong>, a Computer Science student and <strong>Python Full Stack Developer</strong> based in Anantapur, Andhra Pradesh.
+              I'm <strong>Nichenametla Dheeraj</strong>, a <strong>B.Sc. Computer Science</strong> graduate and <strong>Python Full Stack Developer</strong> based in Anantapur, Andhra Pradesh, India.
             </p>
             <p>
-              My technical foundation is built on solid Computer Science principles, object-oriented programming, and relational database management. I specialize in developing web applications using <strong>Python, Django, REST APIs, and MySQL</strong>, paired with <strong>React</strong> on the frontend.
+              My technical foundation is built on solid Computer Science principles, object-oriented programming, and relational database management. I specialize in developing web applications using <strong>Python, Django, REST API, MySQL, HTML, CSS, JavaScript, and React</strong>.
             </p>
             <p>
               I have built projects engineering RESTful services, designing efficient database schemas, and writing clean full-stack workflows. Currently, I am expanding my knowledge into <strong>Machine Learning and Generative AI</strong> to craft intelligent, data-driven software products.
             </p>
             <p>
-              My goal is to work as an Entry-Level Software Engineer delivering clean, scalable code and enterprise-grade software applications.
+              My goal is to work as a Python Full Stack Developer delivering clean, scalable code and enterprise-grade software applications.
             </p>
           </div>
 
@@ -43,8 +43,8 @@ export default function About() {
               </div>
               <div>
                 <h3>Degree</h3>
-                <p>B.Sc Computer Science (2023 – 2026)</p>
-                <span className="info-sub">Government Degree College (Autonomous)</span>
+                <p>B.Sc. Computer Science (2023 – 2026)</p>
+                <span className="info-sub">Government Degree College (Autonomous), Anantapur, AP</span>
               </div>
             </div>
 
@@ -63,10 +63,10 @@ export default function About() {
               <div className="info-icon">
                 <FaPython />
               </div>
-                <div>
+              <div>
                 <h3>Core Technologies</h3>
-                <p>Python, Django, React, MySQL</p>
-                <span className="info-sub">HTML5, CSS3, JavaScript ES6+, SQL</span>
+                <p>Python, Django, REST API, MySQL</p>
+                <span className="info-sub">HTML, CSS, JavaScript, React</span>
               </div>
             </div>
 

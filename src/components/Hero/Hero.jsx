@@ -11,7 +11,7 @@ import { sendResumeDownloadNotification } from "../../lib/notifications";
 
 function Hero() {
   return (
-    <section id="home" className="hero"data-aos="fade-up">
+    <section id="home" className="hero" data-aos="fade-up">
 
       <div className="hero-container">
 
@@ -24,24 +24,18 @@ function Hero() {
           </p>
 
           <h1>
-            Dheeraj <span>Nichenametla</span>
+            Nichenametla <span>Dheeraj</span>
           </h1>
 
           <TypeAnimation
             sequence={[
-              "Python Backend & Full-Stack Developer",
+              "B.Sc. Computer Science | Python Full Stack Developer",
               2000,
 
-              "Django Developer",
+              "Python & Django Developer",
               2000,
 
-              "React Developer",
-              2000,
-
-              "Machine Learning Enthusiast",
-              2000,
-
-              "Generative AI Learner",
+              "React & REST API Developer",
               2000,
             ]}
             wrapper="h2"
@@ -51,11 +45,8 @@ function Hero() {
           />
 
           <p className="hero-desc">
-            Passionate Computer Science student focused on building
-            scalable web applications using Python, Django, React,
-            REST APIs, MySQL, Machine Learning, and Generative AI.
-            I enjoy solving real-world problems through clean,
-            efficient, and user-friendly software.
+            Passionate B.Sc. Computer Science graduate focused on building
+            scalable web applications using Python, Django, REST API, MySQL, React, HTML, CSS, and JavaScript.
           </p>
 
           {/* BUTTONS */}
@@ -91,7 +82,7 @@ function Hero() {
               href="https://github.com/NichenametlaDheeraj"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="GitHub"
+              aria-label="Nichenametla Dheeraj on GitHub"
             >
               <FaGithub />
             </a>
@@ -100,7 +91,7 @@ function Hero() {
               href="https://www.linkedin.com/in/nichenametla-dheeraj-740701342/"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="LinkedIn"
+              aria-label="Nichenametla Dheeraj on LinkedIn"
             >
               <FaLinkedin />
             </a>
@@ -117,8 +108,8 @@ function Hero() {
 
             <img
               src="/profile.png"
-              alt="Dheeraj Nichenametla - Python Backend & Full-Stack Developer"
-              title="Dheeraj Nichenametla"
+              alt="Nichenametla Dheeraj - B.Sc Computer Science | Python Full Stack Developer"
+              title="Nichenametla Dheeraj"
             />
 
           </div>

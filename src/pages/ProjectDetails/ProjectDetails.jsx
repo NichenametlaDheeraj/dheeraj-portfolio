@@ -13,9 +13,9 @@ export default function ProjectDetails() {
 
   useEffect(() => {
     if (project) {
-      document.title = `${project.title} | Dheeraj Nichenametla`;
+      document.title = `${project.title} | Nichenametla Dheeraj`;
     } else {
-      document.title = "Project Not Found | Dheeraj Nichenametla";
+      document.title = "Project Not Found | Nichenametla Dheeraj";
     }
   }, [project]);
 
@@ -77,7 +77,7 @@ export default function ProjectDetails() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.2 }}
           >
-            <img src={project.image} alt={project.title} />
+            <img src={project.image} alt={`Nichenametla Dheeraj - ${project.title} Project`} />
           </motion.div>
         )}
 

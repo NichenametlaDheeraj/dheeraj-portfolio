@@ -12,7 +12,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", title: "", message: "" });
 
   useEffect(() => {
-    document.title = "Dheeraj Nichenametla | Contact";
+    document.title = "Nichenametla Dheeraj | Contact";
   }, []);
 
   const handleChange = (e) => {
@@ -25,7 +25,7 @@ export default function Contact() {
   const getMailtoLink = () => {
     const subject = encodeURIComponent(formData.title || `Portfolio Inquiry from ${formData.name || 'Visitor'}`);
     const body = encodeURIComponent(
-      `Hi Dheeraj,\n\n${formData.message || 'I would like to get in touch with you.'}\n\nBest regards,\n${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}`
+      `Hi Nichenametla Dheeraj,\n\n${formData.message || 'I would like to get in touch with you.'}\n\nBest regards,\n${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}`
     );
     return `mailto:dheerajnichenametla@gmail.com?subject=${subject}&body=${body}`;
   };
@@ -61,7 +61,7 @@ export default function Contact() {
       title: formData.title,
       subject: formData.title,
       message: formData.message,
-      to_name: "Dheeraj Nichenametla",
+      to_name: "Nichenametla Dheeraj",
     };
 
     try {
@@ -120,9 +120,9 @@ export default function Contact() {
     <div className="page-container contact-page">
       <div className="container">
         <PageHeader
-          badge="GET IN TOUCH"
-          title="Let's Build Something Together"
-          subtitle="Whether you have a job opportunity, project inquiry, or technical question, feel free to reach out."
+          badge="CONNECT WITH ME"
+          title="Find Me Online & Get In Touch"
+          subtitle="Whether you have a job opportunity, project inquiry, or technical question, feel free to connect."
         />
 
         <div className="contact-grid">
@@ -167,27 +167,30 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Social Profiles */}
+            {/* Social Profiles - Connect With Me */}
             <div className="contact-socials-card card">
-              <h3>Connect on Platforms</h3>
+              <h3>Connect With Me</h3>
+              <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "12px" }}>
+                Find me on official professional platforms:
+              </p>
               <div className="socials-row">
                 <a
                   href="https://github.com/NichenametlaDheeraj"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-btn"
-                  aria-label="GitHub Profile"
+                  aria-label="Nichenametla Dheeraj on GitHub"
                 >
-                  <FaGithub /> GitHub
+                  <FaGithub /> GitHub Profile
                 </a>
                 <a
                   href="https://www.linkedin.com/in/nichenametla-dheeraj-740701342/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="social-btn"
-                  aria-label="LinkedIn Profile"
+                  aria-label="Nichenametla Dheeraj on LinkedIn"
                 >
-                  <FaLinkedin /> LinkedIn
+                  <FaLinkedin /> LinkedIn Profile
                 </a>
               </div>
             </div>

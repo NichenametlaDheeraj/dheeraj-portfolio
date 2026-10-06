@@ -27,7 +27,7 @@ function Contact() {
   const getMailtoLink = () => {
     const subject = encodeURIComponent(formData.title || `Portfolio Inquiry from ${formData.name || 'Visitor'}`);
     const body = encodeURIComponent(
-      `Hi Dheeraj,\n\n${formData.message || 'I would like to get in touch with you.'}\n\nBest regards,\n${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}`
+      `Hi Nichenametla Dheeraj,\n\n${formData.message || 'I would like to get in touch with you.'}\n\nBest regards,\n${formData.name || 'Visitor'}\nEmail: ${formData.email || 'Not specified'}`
     );
     return `mailto:dheerajnichenametla@gmail.com?subject=${subject}&body=${body}`;
   };
@@ -62,7 +62,7 @@ function Contact() {
       title: formData.title,
       subject: formData.title,
       message: formData.message,
-      to_name: "Dheeraj Nichenametla",
+      to_name: "Nichenametla Dheeraj",
     };
 
     try {
@@ -117,10 +117,10 @@ function Contact() {
   return (
     <section className="contact" id="contact">
       <div className="container">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title">Connect With Me</h2>
         <p className="section-subtitle">
-          Have a software engineering opportunity, project, or any questions?
-          Feel free to contact me.
+          Have a software engineering opportunity, project, or technical question?
+          Feel free to contact Nichenametla Dheeraj.
         </p>
 
         <div className="contact-wrapper">
@@ -157,6 +157,7 @@ function Contact() {
                 href="https://github.com/NichenametlaDheeraj"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Nichenametla Dheeraj on GitHub"
               >
                 <FaGithub />
               </a>
@@ -164,6 +165,7 @@ function Contact() {
                 href="https://www.linkedin.com/in/nichenametla-dheeraj-740701342/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="Nichenametla Dheeraj on LinkedIn"
               >
                 <FaLinkedin />
               </a>

@@ -7,7 +7,7 @@ import "./Achievements.css";
 
 export default function Achievements() {
   useEffect(() => {
-    document.title = "Dheeraj Nichenametla | Achievements";
+    document.title = "Nichenametla Dheeraj | Achievements";
   }, []);
 
   return (

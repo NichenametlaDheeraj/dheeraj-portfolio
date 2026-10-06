@@ -12,7 +12,7 @@ export default function Projects() {
   const [filteredProjects, setFilteredProjects] = useState(projectsData);
 
   useEffect(() => {
-    document.title = "Dheeraj Nichenametla | Projects";
+    document.title = "Nichenametla Dheeraj | Projects";
   }, []);
 
   const categories = ["All", "Python", "Django", "React", "MySQL", "Machine Learning"];
@@ -136,7 +136,7 @@ export default function Projects() {
                 <div className="card-top-accent"></div>
                 {project.image && (
                   <div className="project-card-image">
-                    <img src={project.image} alt={project.title} />
+                    <img src={project.image} alt={`Nichenametla Dheeraj - ${project.title} Project`} />
                     <span className="project-index">0{idx + 1}</span>
                   </div>
                 )}

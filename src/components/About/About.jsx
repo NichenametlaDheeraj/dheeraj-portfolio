@@ -18,15 +18,11 @@ function About() {
             <h3>Hello 👋</h3>
 
             <p>
-              I'm <strong>Dheeraj Nichenametla</strong>, a passionate
-              Computer Science student and <strong>Python Backend & Full-Stack Developer</strong>.
+              I'm <strong>Nichenametla Dheeraj</strong>, a <strong>B.Sc. Computer Science</strong> graduate and <strong>Python Full Stack Developer</strong>.
             </p>
 
             <p>
-              I enjoy building real-world projects using Python,
-              Django, MySQL and REST APIs. I'm currently learning
-              React, Machine Learning and Generative AI to become
-              a skilled Software Engineer.
+              I enjoy building real-world web applications using Python, Django, REST API, MySQL, HTML, CSS, JavaScript, and React.
             </p>
 
             <a

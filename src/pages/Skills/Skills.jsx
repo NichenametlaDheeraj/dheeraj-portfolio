@@ -44,7 +44,7 @@ export default function Skills() {
   const [levelFilter, setLevelFilter] = useState("All");
 
   useEffect(() => {
-    document.title = "Dheeraj Nichenametla | Skills";
+    document.title = "Nichenametla Dheeraj | Skills";
   }, []);
 
   const getStatusBadgeClass = (status) => {

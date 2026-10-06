@@ -6,7 +6,7 @@ import "./NotFound.css";
 
 export default function NotFound() {
   useEffect(() => {
-    document.title = "Page Not Found | Dheeraj Nichenametla";
+    document.title = "Page Not Found | Nichenametla Dheeraj";
   }, []);
 
   return (

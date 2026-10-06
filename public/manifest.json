@@ -1,12 +1,12 @@
 {
-  "name": "PORTFOLIO",
-  "short_name": "PORTFOLIO",
-  "description": "Personal portfolio of Dheeraj Nichenametla - Python Developer, Django Developer, React Developer, Machine Learning Enthusiast and Generative AI Learner.",
+  "name": "Nichenametla Dheeraj Portfolio",
+  "short_name": "Nichenametla Dheeraj",
+  "description": "Personal portfolio of Nichenametla Dheeraj - B.Sc Computer Science graduate and Python Full Stack Developer.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
-  "theme_color": "#0f172a",
+  "background_color": "#0C0A09",
+  "theme_color": "#0C0A09",
   "orientation": "portrait-primary",
   "icons": [
     {
