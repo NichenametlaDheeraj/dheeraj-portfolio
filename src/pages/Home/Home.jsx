@@ -11,7 +11,7 @@ import "./Home.css";
 
 export default function Home() {
   useEffect(() => {
-    document.title = "Nichenametla Dheeraj | B.Sc Computer Science | Python Full Stack Developer";
+    document.title = "Nichenametla Dheeraj | Python Full Stack Developer";
   }, []);
 
   const featuredProjects = projectsData.slice(0, 3);
