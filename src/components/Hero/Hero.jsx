@@ -8,6 +8,7 @@ import {
 
 import { TypeAnimation } from "react-type-animation";
 import { sendResumeDownloadNotification } from "../../lib/notifications";
+import { openResumeModal } from "../ResumeModal/ResumeModal";
 
 function Hero() {
   return (
@@ -53,16 +54,17 @@ function Hero() {
 
           <div className="hero-buttons">
 
-            <a
-              href="/Resume_Dheeraj_Nichenametla.pdf?v=2"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
               className="btn"
-              onClick={sendResumeDownloadNotification}
+              onClick={(e) => {
+                e.preventDefault();
+                sendResumeDownloadNotification();
+                openResumeModal();
+              }}
             >
               <FaDownload />
               Download Resume
-            </a>
+            </button>
 
             <a
               href="#projects"

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { FaBars, FaTimes, FaDownload } from "react-icons/fa";
 import { sendResumeDownloadNotification } from "../../lib/notifications";
+import { openResumeModal } from "../ResumeModal/ResumeModal";
 import "./Navbar.css";
 
 function Navbar() {
@@ -63,34 +64,34 @@ function Navbar() {
 
           {/* Mobile Resume Button */}
           <div className="mobile-resume-container">
-            <a
-              href="/Resume_Dheeraj_Nichenametla.pdf?v=2"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
               className="btn-primary resume-btn-mobile"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 sendResumeDownloadNotification();
+                openResumeModal();
                 closeMenu();
               }}
             >
               <FaDownload />
               <span>Download Resume</span>
-            </a>
+            </button>
           </div>
         </nav>
 
         {/* Desktop Resume Button */}
         <div className="nav-actions">
-          <a
-            href="/Resume_Dheeraj_Nichenametla.pdf?v=2"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
             className="btn-primary resume-btn-desktop"
-            onClick={sendResumeDownloadNotification}
+            onClick={(e) => {
+              e.preventDefault();
+              sendResumeDownloadNotification();
+              openResumeModal();
+            }}
           >
             <FaDownload />
             <span>Download Resume</span>
-          </a>
+          </button>
 
           {/* Hamburger Toggle */}
           <button

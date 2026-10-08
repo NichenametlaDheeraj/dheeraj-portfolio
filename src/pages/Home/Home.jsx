@@ -7,6 +7,7 @@ import {
 } from "react-icons/fa";
 import { projectsData } from "../../data/projects";
 import { sendResumeDownloadNotification } from "../../lib/notifications";
+import { openResumeModal } from "../../components/ResumeModal/ResumeModal";
 import "./Home.css";
 
 export default function Home() {
@@ -68,15 +69,16 @@ export default function Home() {
               <Link to="/projects" className="btn-primary">
                 View My Projects <FaArrowRight />
               </Link>
-              <a
-                href="/Resume_Dheeraj_Nichenametla.pdf?v=2"
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
                 className="btn-secondary"
-                onClick={sendResumeDownloadNotification}
+                onClick={(e) => {
+                  e.preventDefault();
+                  sendResumeDownloadNotification();
+                  openResumeModal();
+                }}
               >
                 <FaDownload /> Download Resume
-              </a>
+              </button>
             </div>
 
             {/* Social Icons / Connect With Me */}

@@ -11,6 +11,7 @@ import Footer from "./components/Footer/Footer";
 import PwaInstallBanner from "./components/PwaInstallBanner/PwaInstallBanner";
 import PageTransition from "./components/PageTransition/PageTransition";
 import ProgressBar from "./components/ProgressBar/ProgressBar";
+import ResumeModal from "./components/ResumeModal/ResumeModal";
 import { sendVisitNotification } from "./lib/notifications";
 
 import Home from "./pages/Home/Home";
@@ -24,7 +25,15 @@ import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   const [loading, setLoading] = useState(true);
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
   const location = useLocation();
+
+  // Listen for openResumeModal custom event
+  useEffect(() => {
+    const handleOpenModal = () => setIsResumeModalOpen(true);
+    window.addEventListener("openResumeModal", handleOpenModal);
+    return () => window.removeEventListener("openResumeModal", handleOpenModal);
+  }, []);
 
   // Initial Loader screen
   useEffect(() => {
@@ -78,6 +87,12 @@ function App() {
 
       {/* PWA Install Notification Banner */}
       <PwaInstallBanner />
+
+      {/* Global Role Resume Selection Modal */}
+      <ResumeModal
+        isOpen={isResumeModalOpen}
+        onClose={() => setIsResumeModalOpen(false)}
+      />
     </>
   );
 }
