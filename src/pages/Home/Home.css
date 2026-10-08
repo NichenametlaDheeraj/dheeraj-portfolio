@@ -220,6 +220,69 @@
   margin-bottom: 0;
 }
 
+.home-resume-section {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.home-resume-heading {
+  font-size: 1.15rem !important;
+  font-weight: 700;
+  color: #FDBA74 !important;
+  margin-bottom: 4px !important;
+}
+
+.home-resume-sub {
+  font-size: 0.85rem !important;
+  color: #A8A29E !important;
+  margin-bottom: 14px !important;
+}
+
+.home-resume-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.home-resume-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: #F5F5F4;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+}
+
+.home-resume-btn:hover {
+  background-color: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.home-resume-btn .btn-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-resume-btn .pdf-icon {
+  color: #EF4444;
+  font-size: 0.95rem;
+}
+
+.home-resume-btn .dl-icon {
+  color: #FDBA74;
+  font-size: 0.8rem;
+}
+
 .about-info-cards {
   display: flex;
   flex-direction: column;
