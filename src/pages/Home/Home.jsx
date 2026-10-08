@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   FaGithub, FaLinkedin, FaEnvelope, FaDownload, FaArrowRight,
-  FaGraduationCap, FaLaptopCode, FaPython, FaBrain, FaFilePdf
+  FaGraduationCap, FaLaptopCode, FaPython, FaBrain
 } from "react-icons/fa";
 import { projectsData } from "../../data/projects";
 import { sendResumeDownloadNotification } from "../../lib/notifications";
@@ -16,15 +16,6 @@ export default function Home() {
   }, []);
 
   const featuredProjects = projectsData.slice(0, 3);
-
-  const roleResumes = [
-    { label: "Python Developer", path: "/resumes/Dheeraj_N_Python_Developer_Resume.pdf" },
-    { label: "Python Full Stack", path: "/resumes/Dheeraj_Nichenametla_Python_Full_Stack_Developer_Resume.pdf" },
-    { label: "Django Backend", path: "/resumes/Dheeraj_Nichenametla_Django_Backend_Developer_Resume.pdf" },
-    { label: "Frontend Developer", path: "/resumes/Dheeraj_Nichenametla_Frontend_Developer_Resume.pdf" },
-    { label: "SQL Database", path: "/resumes/Dheeraj_Nichenametla_SQL_Database_Developer_Resume.pdf" },
-    { label: "Data Entry Executive", path: "/resumes/Dheeraj_Nichenametla_Data_Entry_Executive_Resume.pdf" },
-  ];
 
   return (
     <div className="page-container home-page">
@@ -163,29 +154,6 @@ export default function Home() {
               <p>
                 My goal is to deliver clean, scalable code and enterprise-grade software applications as a Python Full Stack Developer.
               </p>
-
-              <div className="home-resume-section">
-                <h3 className="home-resume-heading">📄 Role-Specific ATS Resumes</h3>
-                <p className="home-resume-sub">Select and download ATS-friendly resumes tailored for specific roles:</p>
-                <div className="home-resume-grid">
-                  {roleResumes.map((role, idx) => (
-                    <a
-                      key={idx}
-                      href={role.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="home-resume-btn"
-                      onClick={sendResumeDownloadNotification}
-                    >
-                      <span className="btn-left">
-                        <FaFilePdf className="pdf-icon" />
-                        {role.label}
-                      </span>
-                      <FaDownload className="dl-icon" />
-                    </a>
-                  ))}
-                </div>
-              </div>
             </div>
 
             {/* Right Column: Info Cards */}
