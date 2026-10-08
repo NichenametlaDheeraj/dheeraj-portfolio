@@ -30,6 +30,76 @@
     line-height: 1.8;
 }
 
+.resume-section-header {
+    margin-top: 25px;
+    margin-bottom: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.resume-section-header h4 {
+    font-size: 18px;
+    color: #FDBA74;
+    margin-bottom: 4px;
+}
+
+.resume-subtitle {
+    font-size: 13px !important;
+    color: #A8A29E !important;
+    margin-bottom: 15px !important;
+}
+
+.role-resume-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.role-resume-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    color: #F5F5F4;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.role-resume-btn:hover {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.4);
+    color: #FFFFFF;
+    transform: translateY(-2px);
+}
+
+.btn-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.pdf-icon {
+    color: #EF4444;
+    font-size: 15px;
+}
+
+.dl-icon {
+    color: #FDBA74;
+    font-size: 12px;
+}
+
+@media(max-width:600px){
+    .role-resume-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 .about-cards {
     display: grid;
     grid-template-columns: repeat(2,1fr);
